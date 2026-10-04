@@ -6,7 +6,22 @@ import { mkdir, readFile, readdir, stat, writeFile } from 'node:fs/promises';
 import { basename, join, resolve } from 'node:path';
 import { Readable } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
+import { isDeepStrictEqual } from 'node:util';
 import { createGzip } from 'node:zlib';
+
+const sha = bytes => createHash('sha256').update(bytes).digest('hex');
+const codecs = ['raw', 'brotli', 'gzip'];
+const streamPrefixes = { css: 'css:', html: 'html:', affectedJavaScript: 'javascript:' };
+function streamSizes(measurement) {
+    const streams = Object.fromEntries(Object.keys(streamPrefixes).map(kind => [kind, { raw: 0, brotli: 0, gzip: 0 }]));
+    for (const [name, sizes] of Object.entries(measurement.artifacts)) {
+        const kind = Object.keys(streamPrefixes).find(candidate => name.startsWith(streamPrefixes[candidate]));
+        if (!kind) throw Error(`Unknown artifact stream: ${name}`);
+        for (const codec of codecs) streams[kind][codec] += sizes[codec];
+    }
+    for (const codec of codecs) if (Object.values(streams).reduce((sum, sizes) => sum + sizes[codec], 0) !== measurement.total[codec]) throw Error(`Per-stream ${codec} sizes do not sum to the artifact total.`);
+    return streams;
+}
 
 const options = {}, counterexamples = [];
 for (const argument of process.argv.slice(2)) {
@@ -17,8 +32,9 @@ for (const argument of process.argv.slice(2)) {
         counterexamples.push({ label, directory: resolve(directory) });
     } else options[name] = parts.join('=');
 }
-const allowed = new Set(['native', 'timings', 'oracle', 'output', 'archive']);
+const allowed = new Set(['native', 'timings', 'oracle', 'output', 'archive', 'summary-only']);
 for (const name of Object.keys(options)) if (!allowed.has(name)) throw Error(`Unknown argument --${name}`);
+if (options['summary-only'] !== undefined && !['true', 'false'].includes(options['summary-only'])) throw Error('Use --summary-only=true or false.');
 for (const name of ['native', 'oracle', 'output', 'archive']) if (!options[name]) throw Error(`Missing --${name}`);
 const nativeDir = resolve(options.native), oracleDir = resolve(options.oracle), output = resolve(options.output), archive = resolve(options.archive);
 const native = JSON.parse(await readFile(join(nativeDir, 'report.json'), 'utf8'));
@@ -34,14 +50,19 @@ const timedFixture = timing?.fixtures.find(fixture => fixture.id === 'timing-man
 if (timing && (timing.status !== 'passed' || !timedFixture?.timings.length || timing.exceptions.length || timing.unexpectedRequests.length || timing.compiler.sha256 !== native.compiler.sha256 || timing.protocol.cpuRate !== native.protocol.cpuRate || timing.browser.product !== native.browser.product || JSON.stringify(timing.host) !== JSON.stringify(native.host) || JSON.stringify(timing.gpu) !== JSON.stringify(native.gpu))) throw Error('Timing report must pass on the same host, frozen compiler, CPU shaping, Chrome and GPU.');
 const modes = ['stockControl', 'baseline', 'naming', 'compact'].filter(mode => native.fixtures.every(fixture => fixture.size[mode]));
 const totals = Object.fromEntries(modes.map(mode => [mode, Object.fromEntries(['raw', 'brotli', 'gzip'].map(codec => [codec, native.fixtures.reduce((sum, fixture) => sum + fixture.size[mode].total[codec], 0)]))]));
+const fixtureStreamSizes = native.fixtures.map(fixture => Object.fromEntries(modes.map(mode => [mode, streamSizes(fixture.size[mode])])));
+const streamTotals = Object.fromEntries(modes.map(mode => [mode, Object.fromEntries(Object.keys(streamPrefixes).map(kind => [kind, Object.fromEntries(codecs.map(codec => [codec, fixtureStreamSizes.reduce((sum, streams) => sum + streams[mode][kind][codec], 0)]))]))]));
+for (const mode of modes) for (const codec of codecs) if (Object.values(streamTotals[mode]).reduce((sum, sizes) => sum + sizes[codec], 0) !== totals[mode][codec]) throw Error(`Per-stream corpus ${mode}/${codec} does not sum to the total.`);
 const reduction = control => Object.fromEntries(['raw', 'brotli', 'gzip'].map(codec => [codec, 100 * (1 - totals.compact[codec] / totals[control][codec])]));
 const stockDeviationCount = native.fixtures.reduce((sum, fixture) => sum + fixture.states.filter(state => state.stockControl && (!state.stockControl.equal || !state.stockControl.screenshotEqual)).length, 0);
 const summary = {
     schemaVersion: 1, date: native.startedAt.slice(0, 10), status: 'passed',
     compiler: { sha256: native.compiler.sha256 }, stockCompiler: native.stockCompiler ? { sha256: native.stockCompiler.sha256 } : null,
     hardware: native.host, chrome: native.browser, gpu: native.gpu, protocol: native.protocol,
-    fixtures: native.fixtures.map(fixture => ({ id: fixture.id, states: fixture.states.length, sizes: Object.fromEntries(modes.map(mode => [mode, fixture.size[mode].total])), stockDeviations: fixture.states.filter(state => state.stockControl && (!state.stockControl.equal || !state.stockControl.screenshotEqual)).map(state => ({ viewport: state.viewport.id, state: state.state, differences: state.stockControl.differences })) })),
-    totals, stockDeviationCount,
+    fixtures: native.fixtures.map((fixture, index) => ({ id: fixture.id, states: fixture.states.length, sizes: Object.fromEntries(modes.map(mode => [mode, fixture.size[mode].total])), streamSizes: fixtureStreamSizes[index], stockDeviations: fixture.states.filter(state => state.stockControl && (!state.stockControl.equal || !state.stockControl.screenshotEqual)).map(state => ({ viewport: state.viewport.id, state: state.state, differences: state.stockControl.differences })) })),
+    totals, streamTotals,
+    streamMeasurement: { css: 'Each stylesheet compressed independently.', html: 'Each full HTML binding compressed independently.', affectedJavaScript: 'Sorted JSON-literal synthetic JS/template stream of non-HTML bindings; excludes unrelated application JavaScript.' },
+    stockDeviationCount,
     reductions: Object.fromEntries(['baseline', 'stockControl'].filter(mode => totals[mode] && (mode !== 'stockControl' || stockDeviationCount === 0)).map(mode => [mode, reduction(mode)])),
     stateCount: native.fixtures.reduce((sum, fixture) => sum + fixture.states.length, 0),
     mutantCount: native.fixtures.reduce((sum, fixture) => sum + fixture.states.filter(state => state.mutant.detected).length, 0),
@@ -51,6 +72,29 @@ const summary = {
     evidence: { archive: basename(archive), excluded: ['Derived compiler executables', 'Duplicate per-state observations already contained in original report.json'], rawReports: ['native/report.json', ...timing ? ['timings/report.json'] : [], 'oracle/report.json'] },
 };
 await mkdir(output, { recursive: true });
+if (options['summary-only'] === 'true') {
+    const previous = JSON.parse(await readFile(join(output, 'summary.json'), 'utf8'));
+    const index = JSON.parse(await readFile(join(output, 'evidence-manifest.json'), 'utf8'));
+    const archiveBytes = await readFile(archive);
+    if (previous.compiler.sha256 !== summary.compiler.sha256 || previous.evidence.sha256 !== sha(archiveBytes) || previous.evidence.archiveBytes !== archiveBytes.length || previous.evidence.archive !== basename(archive)) throw Error('Summary-only update requires the existing verified archive and compiler.');
+    for (const [directory, prefix] of [[nativeDir, 'native'], [oracleDir, 'oracle'], ...timingDir ? [[timingDir, 'timings']] : []]) {
+        const entry = index.files.find(file => file.path === `${prefix}/report.json`);
+        if (!entry || entry.sha256 !== sha(await readFile(join(directory, 'report.json')))) throw Error(`Summary-only ${prefix} report differs from the archived original.`);
+    }
+    if (JSON.stringify(previous.totals) !== JSON.stringify(summary.totals)) throw Error('Summary-only corpus totals changed.');
+    summary.evidence = previous.evidence;
+    const withoutStreams = value => {
+        const copy = structuredClone(value);
+        delete copy.streamTotals;
+        delete copy.streamMeasurement;
+        for (const fixture of copy.fixtures) delete fixture.streamSizes;
+        return copy;
+    };
+    if (!isDeepStrictEqual(withoutStreams(previous), withoutStreams(summary))) throw Error('Summary-only update would change unrelated report fields; supply the original native, oracle and timing inputs.');
+    await writeFile(join(output, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
+    console.log(`Summary only: ${join(output, 'summary.json')}; archive unchanged (${previous.evidence.sha256})`);
+    process.exit(0);
+}
 await mkdir(resolve(archive, '..'), { recursive: true });
 const files = [];
 async function addDirectory(directory, prefix, accept) {
@@ -73,7 +117,6 @@ for (let index = 0; index < files.length; index++) {
     if (index && files[index - 1].name === files[index].name) throw Error(`Duplicate evidence path: ${files[index].name}`);
     if (resolve(files[index].source) === archive) throw Error('Evidence archive must not overwrite an input artifact.');
 }
-const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const manifest = [];
 for (const file of files) { const bytes = await readFile(file.source); manifest.push({ path: file.name, bytes: bytes.length, sha256: sha(bytes) }); }
 const expectedFiles = new Map(manifest.map(file => [file.path, file]));

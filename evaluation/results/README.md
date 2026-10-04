@@ -2,7 +2,9 @@
 
 The compiler preserves the authored rendering in all **31 fixtures and 89 native Chrome states**, and the harness detects all **89 deliberately incorrect variants**. Across this synthetic corpus, compact output reduces the independently compressed CSS, HTML and binding streams by **4.41% Brotli bytes against stock Lightning CSS alpha.72**, or **4.65% against the guarded baseline**. These are corpus results, not a forecast for another application.
 
-The stock control is a separate executable that calls the upstream parser, default minifier and printer without the compact plugin. The guarded baseline uses the same upstream version with temporary rule boundaries to prevent a demonstrated upstream nondeterminism defect. Naming adds identity shortening; compact also searches safe declaration and bundle sharing. The guard costs 13 Brotli bytes across this corpus, so its overhead is visible in the comparison.
+The stock control is a separate executable that calls the upstream parser, default minifier and printer without the compact plugin. The guarded baseline uses the same upstream version with temporary rule boundaries to prevent a demonstrated upstream nondeterminism defect. Naming adds identity shortening; compact also searches safe declaration and bundle sharing. Across this corpus, the guarded baseline is 13 Brotli bytes larger than stock. Baseline selector-binding printing also changes the affected JavaScript stream; the breakdown below exposes each contribution.
+
+Combined CSS, HTML and affected JavaScript binding-stream totals:
 
 | Output | Raw bytes | Brotli bytes | Gzip bytes |
 | --- | ---: | ---: | ---: |
@@ -11,7 +13,24 @@ The stock control is a separate executable that calls the upstream parser, defau
 | Naming | 40,206 | 5,100 | 7,182 |
 | Compact | 39,796 | 5,009 | 7,092 |
 
-Each stylesheet and full HTML binding is compressed independently, using Brotli quality 5/window 22 and gzip level 9. Other bindings form a sorted JSON-literal synthetic JavaScript stream. The totals include the fixture markup and selector/token bindings, so adding classes to HTML cannot disappear from the score. They do not include the neutral browser harness or compiler manifests. An application integration must also measure its actual emitted bundle boundaries.
+The same measurements separated by stream:
+
+| Stream | Output | Raw bytes | Brotli bytes | Gzip bytes |
+| --- | --- | ---: | ---: | ---: |
+| CSS | Stock alpha.72 | 2,809 | 1,897 | 2,636 |
+| CSS | Guarded baseline | 3,266 | 1,917 | 2,666 |
+| CSS | Naming | 2,957 | 1,830 | 2,480 |
+| CSS | Compact | 2,546 | 1,760 | 2,416 |
+| HTML | Stock alpha.72 | 39,191 | 3,157 | 4,501 |
+| HTML | Guarded baseline | 39,191 | 3,157 | 4,501 |
+| HTML | Naming | 37,100 | 3,124 | 4,507 |
+| HTML | Compact | 37,101 | 3,103 | 4,481 |
+| Affected JS bindings | Stock alpha.72 | 199 | 186 | 234 |
+| Affected JS bindings | Guarded baseline | 182 | 179 | 225 |
+| Affected JS bindings | Naming | 149 | 146 | 195 |
+| Affected JS bindings | Compact | 149 | 146 | 195 |
+
+Each stylesheet and full HTML binding is compressed independently, using Brotli quality 5/window 22 and gzip level 9. Other bindings form a sorted JSON-literal synthetic JavaScript stream; this measures the affected selector/token literals and excludes unrelated application JavaScript. Every per-stream row is derived from the frozen raw report's artifact prefixes, and CSS + HTML + affected JS sums exactly to the combined total for each codec and mode. The totals include the fixture markup and selector/token bindings, so adding classes to HTML cannot disappear from the score. They do not include the neutral browser harness or compiler manifests. An application integration must also measure its actual emitted bundle boundaries.
 
 ## Before and after
 
@@ -91,7 +110,7 @@ node scripts/save-evidence.mjs --native=/tmp/compact-functional --oracle=/tmp/co
 
 The evaluator freezes the binaries and records their SHA256, Chrome and GPU version, original observations, PNG hashes, readiness evidence, and full timing traces. Style, layout and task durations come from native performance metrics; Paint durations come from actual renderer-main `Paint` trace spans. The evidence writer rejects mismatched host, compiler, browser or GPU runs, omits derived compiler executables, and writes an archive manifest with the SHA256 of every retained evidence payload.
 
-The committed `summary.json` is the compact machine-readable report. `evidence-manifest.json` indexes the reports, traces and counterexample summaries; `evidence.sha256` identifies the separately distributed archive. Its internal `evidence-manifest.json` records every raw payload. Full observations, PNGs, compiler inputs/outputs, counterexamples and traces are kept in that archive rather than the Cargo package.
+The committed `summary.json` is the compact machine-readable report. `streamTotals` records the corpus breakdown, and every fixture has `streamSizes` for each mode. Add `--summary-only=true` to the evidence-writer command to recompute that summary from the existing indexed reports while leaving the archive untouched; it verifies the original report hashes and every per-stream sum. `evidence-manifest.json` indexes the reports, traces and counterexample summaries; `evidence.sha256` identifies the separately distributed archive. Its internal `evidence-manifest.json` records every raw payload. Full observations, PNGs, compiler inputs/outputs, counterexamples and traces are kept in that archive rather than the Cargo package.
 
 ## Paired native timings
 

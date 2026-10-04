@@ -71,6 +71,76 @@
           "gzip": 114
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 23,
+            "brotli": 27,
+            "gzip": 43
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 33,
+            "brotli": 30,
+            "gzip": 43
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 26,
+            "brotli": 25,
+            "gzip": 37
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 13,
+            "brotli": 17,
+            "gzip": 33
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 65,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -96,6 +166,76 @@
           "raw": 127,
           "brotli": 95,
           "gzip": 127
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 36,
+            "brotli": 36,
+            "gzip": 54
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 59,
+            "brotli": 35,
+            "gzip": 55
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 59,
+            "brotli": 35,
+            "gzip": 55
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 26,
+            "brotli": 30,
+            "gzip": 46
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 65,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -125,6 +265,76 @@
           "gzip": 149
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 83,
+            "brotli": 50,
+            "gzip": 70
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 83,
+            "brotli": 50,
+            "gzip": 70
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 76,
+            "brotli": 49,
+            "gzip": 65
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 76,
+            "brotli": 49,
+            "gzip": 65
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -150,6 +360,76 @@
           "raw": 223,
           "brotli": 127,
           "gzip": 161
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 65,
+            "brotli": 53,
+            "gzip": 71
+          },
+          "html": {
+            "raw": 157,
+            "brotli": 78,
+            "gzip": 94
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 88,
+            "brotli": 54,
+            "gzip": 71
+          },
+          "html": {
+            "raw": 157,
+            "brotli": 78,
+            "gzip": 94
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 77,
+            "brotli": 49,
+            "gzip": 63
+          },
+          "html": {
+            "raw": 146,
+            "brotli": 78,
+            "gzip": 98
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 77,
+            "brotli": 49,
+            "gzip": 63
+          },
+          "html": {
+            "raw": 146,
+            "brotli": 78,
+            "gzip": 98
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -179,6 +459,76 @@
           "gzip": 140
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 52,
+            "brotli": 44,
+            "gzip": 56
+          },
+          "html": {
+            "raw": 140,
+            "brotli": 77,
+            "gzip": 102
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 52,
+            "brotli": 44,
+            "gzip": 56
+          },
+          "html": {
+            "raw": 140,
+            "brotli": 77,
+            "gzip": 102
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 40,
+            "brotli": 33,
+            "gzip": 45
+          },
+          "html": {
+            "raw": 119,
+            "brotli": 73,
+            "gzip": 95
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 40,
+            "brotli": 33,
+            "gzip": 45
+          },
+          "html": {
+            "raw": 119,
+            "brotli": 73,
+            "gzip": 95
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -204,6 +554,76 @@
           "raw": 237,
           "brotli": 135,
           "gzip": 162
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 53,
+            "brotli": 52,
+            "gzip": 65
+          },
+          "html": {
+            "raw": 154,
+            "brotli": 78,
+            "gzip": 93
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 83,
+            "brotli": 57,
+            "gzip": 69
+          },
+          "html": {
+            "raw": 154,
+            "brotli": 78,
+            "gzip": 93
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 83,
+            "brotli": 57,
+            "gzip": 69
+          },
+          "html": {
+            "raw": 154,
+            "brotli": 78,
+            "gzip": 93
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 83,
+            "brotli": 57,
+            "gzip": 69
+          },
+          "html": {
+            "raw": 154,
+            "brotli": 78,
+            "gzip": 93
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -233,6 +653,76 @@
           "gzip": 184
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 201,
+            "brotli": 79,
+            "gzip": 119
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 201,
+            "brotli": 79,
+            "gzip": 119
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 194,
+            "brotli": 77,
+            "gzip": 114
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 97,
+            "brotli": 68,
+            "gzip": 103
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 65,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -258,6 +748,76 @@
           "raw": 275,
           "brotli": 134,
           "gzip": 177
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 109,
+            "brotli": 52,
+            "gzip": 80
+          },
+          "html": {
+            "raw": 207,
+            "brotli": 91,
+            "gzip": 109
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 109,
+            "brotli": 52,
+            "gzip": 80
+          },
+          "html": {
+            "raw": 207,
+            "brotli": 91,
+            "gzip": 109
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 97,
+            "brotli": 49,
+            "gzip": 70
+          },
+          "html": {
+            "raw": 178,
+            "brotli": 85,
+            "gzip": 107
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 97,
+            "brotli": 49,
+            "gzip": 70
+          },
+          "html": {
+            "raw": 178,
+            "brotli": 85,
+            "gzip": 107
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -287,6 +847,76 @@
           "gzip": 178
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 112,
+            "brotli": 56,
+            "gzip": 81
+          },
+          "html": {
+            "raw": 207,
+            "brotli": 91,
+            "gzip": 109
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 112,
+            "brotli": 56,
+            "gzip": 81
+          },
+          "html": {
+            "raw": 207,
+            "brotli": 91,
+            "gzip": 109
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 100,
+            "brotli": 54,
+            "gzip": 71
+          },
+          "html": {
+            "raw": 178,
+            "brotli": 85,
+            "gzip": 107
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 100,
+            "brotli": 54,
+            "gzip": 71
+          },
+          "html": {
+            "raw": 178,
+            "brotli": 85,
+            "gzip": 107
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -312,6 +942,76 @@
           "raw": 263,
           "brotli": 138,
           "gzip": 171
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 97,
+            "brotli": 55,
+            "gzip": 74
+          },
+          "html": {
+            "raw": 207,
+            "brotli": 91,
+            "gzip": 109
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 97,
+            "brotli": 55,
+            "gzip": 74
+          },
+          "html": {
+            "raw": 207,
+            "brotli": 91,
+            "gzip": 109
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 85,
+            "brotli": 53,
+            "gzip": 64
+          },
+          "html": {
+            "raw": 178,
+            "brotli": 85,
+            "gzip": 107
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 85,
+            "brotli": 53,
+            "gzip": 64
+          },
+          "html": {
+            "raw": 178,
+            "brotli": 85,
+            "gzip": 107
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -341,6 +1041,76 @@
           "gzip": 176
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 103,
+            "brotli": 61,
+            "gzip": 79
+          },
+          "html": {
+            "raw": 207,
+            "brotli": 91,
+            "gzip": 109
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 103,
+            "brotli": 61,
+            "gzip": 79
+          },
+          "html": {
+            "raw": 207,
+            "brotli": 91,
+            "gzip": 109
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 91,
+            "brotli": 59,
+            "gzip": 69
+          },
+          "html": {
+            "raw": 178,
+            "brotli": 85,
+            "gzip": 107
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 91,
+            "brotli": 59,
+            "gzip": 69
+          },
+          "html": {
+            "raw": 178,
+            "brotli": 85,
+            "gzip": 107
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -366,6 +1136,76 @@
           "raw": 269,
           "brotli": 135,
           "gzip": 180
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 94,
+            "brotli": 71,
+            "gzip": 99
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 175,
+            "brotli": 73,
+            "gzip": 101
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 168,
+            "brotli": 68,
+            "gzip": 96
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 168,
+            "brotli": 68,
+            "gzip": 96
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -395,6 +1235,76 @@
           "gzip": 194
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 149,
+            "brotli": 87,
+            "gzip": 112
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 183,
+            "brotli": 88,
+            "gzip": 118
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 166,
+            "brotli": 85,
+            "gzip": 113
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 132,
+            "brotli": 82,
+            "gzip": 110
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -420,6 +1330,76 @@
           "raw": 287,
           "brotli": 175,
           "gzip": 230
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 214,
+            "brotli": 111,
+            "gzip": 152
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 214,
+            "brotli": 111,
+            "gzip": 152
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 186,
+            "brotli": 108,
+            "gzip": 146
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 186,
+            "brotli": 108,
+            "gzip": 146
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -449,6 +1429,76 @@
           "gzip": 296
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 255,
+            "brotli": 134,
+            "gzip": 188
+          },
+          "html": {
+            "raw": 166,
+            "brotli": 80,
+            "gzip": 117
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 255,
+            "brotli": 134,
+            "gzip": 188
+          },
+          "html": {
+            "raw": 166,
+            "brotli": 80,
+            "gzip": 117
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 216,
+            "brotli": 130,
+            "gzip": 180
+          },
+          "html": {
+            "raw": 155,
+            "brotli": 81,
+            "gzip": 116
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 216,
+            "brotli": 130,
+            "gzip": 180
+          },
+          "html": {
+            "raw": 155,
+            "brotli": 81,
+            "gzip": 116
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -474,6 +1524,76 @@
           "raw": 184,
           "brotli": 147,
           "gzip": 202
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 87,
+            "brotli": 67,
+            "gzip": 95
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 46,
+            "brotli": 49,
+            "gzip": 66
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 87,
+            "brotli": 67,
+            "gzip": 95
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 45,
+            "brotli": 46,
+            "gzip": 65
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 61,
+            "brotli": 55,
+            "gzip": 76
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 66,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 22,
+            "brotli": 26,
+            "gzip": 42
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 61,
+            "brotli": 55,
+            "gzip": 76
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 66,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 22,
+            "brotli": 26,
+            "gzip": 42
+          }
         }
       },
       "stockDeviations": []
@@ -503,6 +1623,76 @@
           "gzip": 252
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 122,
+            "brotli": 89,
+            "gzip": 122
+          },
+          "html": {
+            "raw": 218,
+            "brotli": 108,
+            "gzip": 133
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 122,
+            "brotli": 89,
+            "gzip": 122
+          },
+          "html": {
+            "raw": 218,
+            "brotli": 108,
+            "gzip": 133
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 115,
+            "brotli": 86,
+            "gzip": 118
+          },
+          "html": {
+            "raw": 211,
+            "brotli": 103,
+            "gzip": 134
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 115,
+            "brotli": 86,
+            "gzip": 118
+          },
+          "html": {
+            "raw": 211,
+            "brotli": 103,
+            "gzip": 134
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -528,6 +1718,76 @@
           "raw": 176,
           "brotli": 104,
           "gzip": 143
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 36,
+            "brotli": 36,
+            "gzip": 54
+          },
+          "html": {
+            "raw": 157,
+            "brotli": 75,
+            "gzip": 97
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 59,
+            "brotli": 35,
+            "gzip": 55
+          },
+          "html": {
+            "raw": 157,
+            "brotli": 75,
+            "gzip": 97
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 52,
+            "brotli": 35,
+            "gzip": 50
+          },
+          "html": {
+            "raw": 150,
+            "brotli": 74,
+            "gzip": 100
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 26,
+            "brotli": 30,
+            "gzip": 46
+          },
+          "html": {
+            "raw": 150,
+            "brotli": 74,
+            "gzip": 97
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -557,6 +1817,76 @@
           "gzip": 167
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 69,
+            "brotli": 60,
+            "gzip": 78
+          },
+          "html": {
+            "raw": 120,
+            "brotli": 71,
+            "gzip": 89
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 82,
+            "brotli": 61,
+            "gzip": 79
+          },
+          "html": {
+            "raw": 120,
+            "brotli": 71,
+            "gzip": 89
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 82,
+            "brotli": 61,
+            "gzip": 79
+          },
+          "html": {
+            "raw": 120,
+            "brotli": 71,
+            "gzip": 89
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 69,
+            "brotli": 60,
+            "gzip": 78
+          },
+          "html": {
+            "raw": 120,
+            "brotli": 71,
+            "gzip": 89
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -582,6 +1912,76 @@
           "raw": 160,
           "brotli": 120,
           "gzip": 160
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 69,
+            "brotli": 60,
+            "gzip": 87
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 92,
+            "brotli": 61,
+            "gzip": 88
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 85,
+            "brotli": 60,
+            "gzip": 83
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 66,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 59,
+            "brotli": 55,
+            "gzip": 79
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 65,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -611,6 +2011,76 @@
           "gzip": 207
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 109,
+            "brotli": 73,
+            "gzip": 91
+          },
+          "html": {
+            "raw": 202,
+            "brotli": 86,
+            "gzip": 116
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 122,
+            "brotli": 74,
+            "gzip": 93
+          },
+          "html": {
+            "raw": 202,
+            "brotli": 86,
+            "gzip": 116
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 122,
+            "brotli": 74,
+            "gzip": 93
+          },
+          "html": {
+            "raw": 202,
+            "brotli": 86,
+            "gzip": 116
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 109,
+            "brotli": 73,
+            "gzip": 91
+          },
+          "html": {
+            "raw": 202,
+            "brotli": 86,
+            "gzip": 116
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -636,6 +2106,76 @@
           "raw": 1909,
           "brotli": 320,
           "gzip": 399
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 100,
+            "brotli": 86,
+            "gzip": 108
+          },
+          "html": {
+            "raw": 1781,
+            "brotli": 203,
+            "gzip": 251
+          },
+          "affectedJavaScript": {
+            "raw": 36,
+            "brotli": 34,
+            "gzip": 44
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 100,
+            "brotli": 86,
+            "gzip": 108
+          },
+          "html": {
+            "raw": 1781,
+            "brotli": 203,
+            "gzip": 251
+          },
+          "affectedJavaScript": {
+            "raw": 28,
+            "brotli": 31,
+            "gzip": 40
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 100,
+            "brotli": 86,
+            "gzip": 108
+          },
+          "html": {
+            "raw": 1781,
+            "brotli": 203,
+            "gzip": 251
+          },
+          "affectedJavaScript": {
+            "raw": 28,
+            "brotli": 31,
+            "gzip": 40
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 100,
+            "brotli": 86,
+            "gzip": 108
+          },
+          "html": {
+            "raw": 1781,
+            "brotli": 203,
+            "gzip": 251
+          },
+          "affectedJavaScript": {
+            "raw": 28,
+            "brotli": 31,
+            "gzip": 40
+          }
         }
       },
       "stockDeviations": []
@@ -665,6 +2205,76 @@
           "gzip": 201
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 36,
+            "brotli": 36,
+            "gzip": 54
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 73,
+            "brotli": 68,
+            "gzip": 80
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 59,
+            "brotli": 35,
+            "gzip": 55
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 65,
+            "brotli": 67,
+            "gzip": 76
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 52,
+            "brotli": 35,
+            "gzip": 50
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 55,
+            "brotli": 54,
+            "gzip": 69
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 26,
+            "brotli": 30,
+            "gzip": 46
+          },
+          "html": {
+            "raw": 105,
+            "brotli": 67,
+            "gzip": 86
+          },
+          "affectedJavaScript": {
+            "raw": 55,
+            "brotli": 54,
+            "gzip": 69
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -690,6 +2300,76 @@
           "raw": 243,
           "brotli": 171,
           "gzip": 214
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 108,
+            "brotli": 77,
+            "gzip": 97
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 44,
+            "brotli": 35,
+            "gzip": 44
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 131,
+            "brotli": 79,
+            "gzip": 98
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 44,
+            "brotli": 35,
+            "gzip": 44
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 124,
+            "brotli": 77,
+            "gzip": 94
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 44,
+            "brotli": 35,
+            "gzip": 44
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 98,
+            "brotli": 71,
+            "gzip": 89
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 65,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 44,
+            "brotli": 35,
+            "gzip": 44
+          }
         }
       },
       "stockDeviations": []
@@ -719,6 +2399,76 @@
           "gzip": 213
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 36,
+            "brotli": 36,
+            "gzip": 54
+          },
+          "html": {
+            "raw": 307,
+            "brotli": 127,
+            "gzip": 160
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 59,
+            "brotli": 35,
+            "gzip": 55
+          },
+          "html": {
+            "raw": 307,
+            "brotli": 127,
+            "gzip": 160
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 55,
+            "brotli": 34,
+            "gzip": 53
+          },
+          "html": {
+            "raw": 303,
+            "brotli": 127,
+            "gzip": 160
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 55,
+            "brotli": 34,
+            "gzip": 53
+          },
+          "html": {
+            "raw": 303,
+            "brotli": 127,
+            "gzip": 160
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -744,6 +2494,76 @@
           "raw": 374,
           "brotli": 155,
           "gzip": 209
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 63,
+            "brotli": 56,
+            "gzip": 81
+          },
+          "html": {
+            "raw": 349,
+            "brotli": 109,
+            "gzip": 147
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 86,
+            "brotli": 58,
+            "gzip": 82
+          },
+          "html": {
+            "raw": 349,
+            "brotli": 109,
+            "gzip": 147
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 72,
+            "brotli": 55,
+            "gzip": 70
+          },
+          "html": {
+            "raw": 328,
+            "brotli": 112,
+            "gzip": 146
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 46,
+            "brotli": 47,
+            "gzip": 66
+          },
+          "html": {
+            "raw": 328,
+            "brotli": 108,
+            "gzip": 143
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -773,6 +2593,76 @@
           "gzip": 201
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 102,
+            "brotli": 71,
+            "gzip": 106
+          },
+          "html": {
+            "raw": 163,
+            "brotli": 75,
+            "gzip": 97
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 125,
+            "brotli": 73,
+            "gzip": 110
+          },
+          "html": {
+            "raw": 163,
+            "brotli": 75,
+            "gzip": 97
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 111,
+            "brotli": 71,
+            "gzip": 104
+          },
+          "html": {
+            "raw": 156,
+            "brotli": 76,
+            "gzip": 99
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 85,
+            "brotli": 67,
+            "gzip": 99
+          },
+          "html": {
+            "raw": 160,
+            "brotli": 77,
+            "gzip": 102
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -798,6 +2688,76 @@
           "raw": 127,
           "brotli": 95,
           "gzip": 127
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 48,
+            "brotli": 43,
+            "gzip": 63
+          },
+          "html": {
+            "raw": 118,
+            "brotli": 72,
+            "gzip": 96
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 71,
+            "brotli": 48,
+            "gzip": 65
+          },
+          "html": {
+            "raw": 118,
+            "brotli": 72,
+            "gzip": 96
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 52,
+            "brotli": 35,
+            "gzip": 50
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 26,
+            "brotli": 30,
+            "gzip": 46
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 65,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -827,6 +2787,76 @@
           "gzip": 174
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 106,
+            "brotli": 67,
+            "gzip": 95
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 106,
+            "brotli": 67,
+            "gzip": 95
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 99,
+            "brotli": 65,
+            "gzip": 90
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 99,
+            "brotli": 65,
+            "gzip": 90
+          },
+          "html": {
+            "raw": 101,
+            "brotli": 67,
+            "gzip": 84
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     },
     {
@@ -852,6 +2882,76 @@
           "raw": 167,
           "brotli": 101,
           "gzip": 136
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 36,
+            "brotli": 36,
+            "gzip": 54
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 59,
+            "brotli": 35,
+            "gzip": 55
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 59,
+            "brotli": 35,
+            "gzip": 55
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 59,
+            "brotli": 35,
+            "gzip": 55
+          },
+          "html": {
+            "raw": 108,
+            "brotli": 66,
+            "gzip": 81
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
         }
       },
       "stockDeviations": []
@@ -881,6 +2981,76 @@
           "gzip": 1448
         }
       },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 36,
+            "brotli": 36,
+            "gzip": 54
+          },
+          "html": {
+            "raw": 32927,
+            "brotli": 696,
+            "gzip": 1420
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 59,
+            "brotli": 35,
+            "gzip": 55
+          },
+          "html": {
+            "raw": 32927,
+            "brotli": 696,
+            "gzip": 1420
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 52,
+            "brotli": 35,
+            "gzip": 50
+          },
+          "html": {
+            "raw": 31135,
+            "brotli": 688,
+            "gzip": 1412
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 26,
+            "brotli": 30,
+            "gzip": 46
+          },
+          "html": {
+            "raw": 31135,
+            "brotli": 680,
+            "gzip": 1402
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
       "stockDeviations": []
     }
   ],
@@ -905,6 +3075,81 @@
       "brotli": 5009,
       "gzip": 7092
     }
+  },
+  "streamTotals": {
+    "stockControl": {
+      "css": {
+        "raw": 2809,
+        "brotli": 1897,
+        "gzip": 2636
+      },
+      "html": {
+        "raw": 39191,
+        "brotli": 3157,
+        "gzip": 4501
+      },
+      "affectedJavaScript": {
+        "raw": 199,
+        "brotli": 186,
+        "gzip": 234
+      }
+    },
+    "baseline": {
+      "css": {
+        "raw": 3266,
+        "brotli": 1917,
+        "gzip": 2666
+      },
+      "html": {
+        "raw": 39191,
+        "brotli": 3157,
+        "gzip": 4501
+      },
+      "affectedJavaScript": {
+        "raw": 182,
+        "brotli": 179,
+        "gzip": 225
+      }
+    },
+    "naming": {
+      "css": {
+        "raw": 2957,
+        "brotli": 1830,
+        "gzip": 2480
+      },
+      "html": {
+        "raw": 37100,
+        "brotli": 3124,
+        "gzip": 4507
+      },
+      "affectedJavaScript": {
+        "raw": 149,
+        "brotli": 146,
+        "gzip": 195
+      }
+    },
+    "compact": {
+      "css": {
+        "raw": 2546,
+        "brotli": 1760,
+        "gzip": 2416
+      },
+      "html": {
+        "raw": 37101,
+        "brotli": 3103,
+        "gzip": 4481
+      },
+      "affectedJavaScript": {
+        "raw": 149,
+        "brotli": 146,
+        "gzip": 195
+      }
+    }
+  },
+  "streamMeasurement": {
+    "css": "Each stylesheet compressed independently.",
+    "html": "Each full HTML binding compressed independently.",
+    "affectedJavaScript": "Sorted JSON-literal synthetic JS/template stream of non-HTML bindings; excludes unrelated application JavaScript."
   },
   "stockDeviationCount": 0,
   "reductions": {
