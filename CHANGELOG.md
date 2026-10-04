@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0 — 2026-10-04
 
 - Framework-neutral Rust preparation, cascade-safe compaction, and generated
   class-binding manifests for ordinary CSS.

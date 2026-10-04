@@ -80,7 +80,6 @@ const expectedFiles = new Map(manifest.map(file => [file.path, file]));
 summary.evidence.fileCount = manifest.length;
 summary.evidence.uncompressedBytes = manifest.reduce((sum, file) => sum + file.bytes, 0);
 const manifestBytes = Buffer.from(JSON.stringify({ schemaVersion: 1, compiler: summary.compiler, stockCompiler: summary.stockCompiler, files: manifest }, null, 2) + '\n');
-await writeFile(join(output, 'evidence-manifest.json'), manifestBytes);
 
 function tarHeader(name, size) {
     const header = Buffer.alloc(512), parts = name.split('/');
@@ -109,6 +108,15 @@ await pipeline(Readable.from(tarContents()), createGzip({ level: 9 }), createWri
 const archiveBytes = await readFile(archive);
 summary.evidence.sha256 = sha(archiveBytes);
 summary.evidence.archiveBytes = archiveBytes.length;
+// The release archive retains the complete manifest. Keep the package index
+// small: reports contain all observation/PNG hashes, and each raw Paint trace
+// remains directly indexed here alongside the historical failure summaries.
+const index = {
+    schemaVersion: 1, compiler: summary.compiler, stockCompiler: summary.stockCompiler,
+    archive: { name: basename(archive), sha256: summary.evidence.sha256, bytes: archiveBytes.length, fullManifest: 'evidence-manifest.json', payloadFiles: manifest.length },
+    files: manifest.filter(file => /^(native|timings|oracle)\/report\.json$/.test(file.path) || file.path.endsWith('.trace.json.gz') || /^counterexamples\/[^/]+\/(report|summary)\.json$/.test(file.path)),
+};
+await writeFile(join(output, 'evidence-manifest.json'), JSON.stringify(index, null, 2) + '\n');
 await writeFile(join(output, 'evidence.sha256'), `${summary.evidence.sha256}  ${basename(archive)}\n`);
 await writeFile(join(output, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
 console.log(`Summary: ${join(output, 'summary.json')}`);
