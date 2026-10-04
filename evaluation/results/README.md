@@ -35,7 +35,7 @@ The compiled result uses one shared bundle, keeping the HTML to one token per ow
 <main><div data-probe="left" class="a">left</div><div data-probe="right" class="a">right</div></main>
 ```
 
-The independent oracle finds the same **95 Brotli / 127 gzip / 127 raw bytes** across the two artifacts. It enumerates 246 feasible renderings within a declared finite domain of 12 candidate rectangles, at most four symbols, first-K names, and rule/declaration orders. The single-property fixture enumerates seven renderings and reaches **82 / 114 / 114 bytes**. This proves the minimum within those finite domains; the whole-application search is bounded and makes no global-optimum claim.
+The independent oracle finds the same **95 Brotli / 127 gzip / 127 raw bytes** across the two artifacts. It evaluates 246 leaf candidates within a declared finite domain of 12 candidate rectangles, at most four symbols, first-K names, and rule/declaration orders. The single-property fixture evaluates seven candidates and reaches **82 / 114 / 114 bytes**. This proves the minimum within those finite domains; the whole-application search is bounded and makes no global-optimum claim.
 
 ## What the browser checks
 
@@ -91,6 +91,19 @@ node scripts/save-evidence.mjs --native=/tmp/compact-functional --oracle=/tmp/co
 
 The evaluator freezes the binaries and records their SHA256, Chrome and GPU version, original observations, PNG hashes, readiness evidence, and full timing traces. Style, layout and task durations come from native performance metrics; Paint durations come from actual renderer-main `Paint` trace spans. The evidence writer rejects mismatched host, compiler, browser or GPU runs, omits derived compiler executables, and writes an archive manifest with the SHA256 of every retained evidence payload.
 
-The committed `summary.json` is the compact machine-readable report. `evidence-manifest.json` lists the raw archive contents; `evidence.sha256` identifies the separately distributed archive. Full observations, PNGs, compiler inputs/outputs, counterexamples and traces are kept in that archive rather than the Cargo package.
+The committed `summary.json` is the compact machine-readable report. `evidence-manifest.json` indexes the reports, traces and counterexample summaries; `evidence.sha256` identifies the separately distributed archive. Its internal `evidence-manifest.json` records every raw payload. Full observations, PNGs, compiler inputs/outputs, counterexamples and traces are kept in that archive rather than the Cargo package.
 
-Final paired timing results will be appended after the quiet-host run. No rendering-speed improvement is claimed from bundle reduction alone.
+## Paired native timings
+
+Eight fresh-document AB/BA pairs on the quiet host rendered the 512-node fixture against the same final compiler. Each of the 16 preserved traces contains two actual renderer-main Paint spans. The table reports milliseconds and the median of within-pair compact-minus-baseline deltas; that median need not equal the difference between the two independent medians.
+
+| Measurement | Guarded median | Compact median | Paired delta median | Paired delta range |
+| --- | ---: | ---: | ---: | ---: |
+| Recalculate style | 2.236 | 2.260 | −0.083 | −0.454 to +1.191 |
+| Layout | 2.439 | 2.054 | −0.156 | −1.109 to +0.226 |
+| Main-thread tasks | 25.771 | 25.437 | +0.079 | −8.578 to +3.575 |
+| Actual Paint spans | 0.630 | 0.541 | −0.030 | −0.583 to +0.818 |
+
+Results are mixed, with positive and negative samples in every measurement. They do not establish a rendering-speed improvement. Paint is the union of native `Paint` trace intervals, not task duration or raster/GPU presentation time; the raw traces retain the exact events for inspection.
+
+The evaluated shipping CLI SHA256 is `e64266db741b28eb6d71b6fca7041be2e5abae0b647dad9e0ae225b448d1227f`. Its source, guarded baseline and compact output passed the same native equality checks in both the functional and timing captures.

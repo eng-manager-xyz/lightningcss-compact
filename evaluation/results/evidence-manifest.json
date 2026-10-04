@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "compiler": {
+    "sha256": "e64266db741b28eb6d71b6fca7041be2e5abae0b647dad9e0ae225b448d1227f"
+  },
+  "stockCompiler": {
+    "sha256": "e6bb0479cb1e10d448abe51f351687e20f5238a64c41f05e1e105b9f6cc51509"
+  },
+  "archive": {
+    "name": "lightningcss-compact-synthetic-evidence-2026-10-04.tar.gz",
+    "sha256": "8767ab8d673cedcac639221128c0486f7ca763c6d5a9fa6ea135420470d55f31",
+    "bytes": 2589010,
+    "fullManifest": "evidence-manifest.json",
+    "payloadFiles": 4028
+  },
+  "files": [
+    {
+      "path": "counterexamples/boundary-whitespace/report.json",
+      "bytes": 4714737,
+      "sha256": "a7710ec35e0c308f99ada0829c01d0954e818f69b9c0fb7e2b26e3b39b24844a"
+    },
+    {
+      "path": "counterexamples/logical-scroll-conflict/report.json",
+      "bytes": 649517,
+      "sha256": "b45cb958d915e4acb28de708234c6586a4027c82d4c38caf1bb3529a0e35937f"
+    },
+    {
+      "path": "counterexamples/noscript-inventory/report.json",
+      "bytes": 1759177,
+      "sha256": "bacbf485fa019660f660e88b4b987276cb77deaf7f2485d900aa51c1ce48f4bc"
+    },
+    {
+      "path": "counterexamples/upstream-visible-style-index/summary.json",
+      "bytes": 974,
+      "sha256": "78cb352cefad897b0c0fa40e09bf0dd157484fb49c7d0ae077e530a3fd176f8c"
+    },
+    {
+      "path": "native/report.json",
+      "bytes": 86887795,
+      "sha256": "f290fccf3e714f04ac0bf3add2bed3888589d20097157978ee96a42666887cab"
+    },
+    {
+      "path": "oracle/report.json",
+      "bytes": 9297,
+      "sha256": "a307467be24b2aa5b04e5c41d1444bc63d7c4d6a1adc99581fa5ace0b076563b"
+    },
+    {
+      "path": "timings/report.json",
+      "bytes": 6652452,
+      "sha256": "2d26a40fa18d4165df270bf18f0c78eab570fa5f5482c0f19ee2f7fa1cee457c"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-0-baseline.trace.json.gz",
+      "bytes": 21681,
+      "sha256": "d6ed4717bf69d9f124c42de6e8a9d72697c23ff92209911fdc5887a42653087c"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-0-compact.trace.json.gz",
+      "bytes": 21588,
+      "sha256": "0bc85bdd728a2dd0d3f8492f35c21770d7176ec17158b4736c63d337617e3c7b"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-1-baseline.trace.json.gz",
+      "bytes": 21525,
+      "sha256": "7558037169e51e6de225ae54c18e555adc87c036d271c154efd4d83e3651cb42"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-1-compact.trace.json.gz",
+      "bytes": 21599,
+      "sha256": "e7075666c30ddbfc2204a377e3e8f5faa1447cf0d3056d7862d1eaf96a360b24"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-2-baseline.trace.json.gz",
+      "bytes": 21627,
+      "sha256": "596e48ec04ddcc747dfa8f4b4de5a02d1bfb6a09a23999e7a87d88972ab2458c"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-2-compact.trace.json.gz",
+      "bytes": 21582,
+      "sha256": "ea5f01be880e54edd72e0fb7f3241723ee8e57da15254bc5a81d5ee906cc096a"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-3-baseline.trace.json.gz",
+      "bytes": 21534,
+      "sha256": "0b4aef04872814edfce4afeb8ed23212614a8b07163e845cebf34f8fa263bb5c"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-3-compact.trace.json.gz",
+      "bytes": 22661,
+      "sha256": "3ef28f6da0954cda0aff0a09de802a14093d5b741fdff4e024ca404263ad95fc"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-4-baseline.trace.json.gz",
+      "bytes": 21570,
+      "sha256": "10120c57c6f2bc4eb247f01977badc546e441eb6767eaef4b72c8ab03585528a"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-4-compact.trace.json.gz",
+      "bytes": 21512,
+      "sha256": "27672964efb6f9a6033c956777fc4ea30c5ae813640e3b5a206fa2ecece0ba7b"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-5-baseline.trace.json.gz",
+      "bytes": 21529,
+      "sha256": "78f035d34f4d53d6301fcdef3c32dcb352d00b1d4ca4c57382ac0ce81cc1f9c4"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-5-compact.trace.json.gz",
+      "bytes": 21626,
+      "sha256": "3ca72515c3c49fb4b36a9af0e63efeb3ebc1df41f0cd653794abaa6b67d4bd57"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-6-baseline.trace.json.gz",
+      "bytes": 21682,
+      "sha256": "95b258462ce14bfeb0ea467a1bf224f7c204674688b639902a958cb39b8a03ea"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-6-compact.trace.json.gz",
+      "bytes": 21566,
+      "sha256": "6ebbead830a2a65f8ecf655db37ea6cfa97b476f64279ce6637051c46ff5e64a"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-7-baseline.trace.json.gz",
+      "bytes": 21541,
+      "sha256": "71411dde401edd2ffe632341c9ac7051d035ebc254e3f9a87d9d0c2ac4dadbb9"
+    },
+    {
+      "path": "timings/timing-many-nodes-pair-7-compact.trace.json.gz",
+      "bytes": 21623,
+      "sha256": "a7c0994200eb0db4b582b984b2b3a0af7386c8259822825264dd8ede2bb15600"
+    }
+  ]
+}

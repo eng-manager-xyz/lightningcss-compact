@@ -68,6 +68,9 @@ bindings, and managed, dynamic, and reserved class names. Class renaming and
 expansion require complete usage information. External identifiers and classes
 created by libraries must be preserved or explicitly accounted for. A CSS-only
 inventory cannot establish how HTML or scripts use its classes.
+Generated naming requires case-sensitive class matching in standards-mode
+documents (`<!doctype html>`). Quirks-mode HTML is outside this release's
+renaming and expansion contract; use name-preserving output there.
 
 Bindings have four purposes:
 
