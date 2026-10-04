@@ -1,0 +1,21 @@
+lightningcss-compact
+Copyright (c) 2026 eng-manager-xyz contributors
+
+Original code in this project is licensed under MIT OR Apache-2.0.
+
+This project uses Lightning CSS, a CSS parser, transformer, and minifier by
+Devon Govett and Parcel contributors:
+https://github.com/parcel-bundler/lightningcss
+Lightning CSS is licensed under the Mozilla Public License 2.0 (MPL-2.0).
+Its license and upstream notices remain applicable to its source and any
+covered modifications; this project's license does not replace them.
+
+Dependencies retain their own licenses. Cargo.toml and Cargo.lock identify
+the resolved dependencies; THIRD-PARTY.md records their declared licenses and
+upstream locations. No upstream Lightning CSS source is relicensed by this
+notice.
+
+Actual dependency license, copyright, and disclaimer files are included under
+licenses/third-party/. Its generated index links the exact unmodified Cargo
+source packages and records any missing upstream notice files. Native binary
+archives include that tree alongside this notice.

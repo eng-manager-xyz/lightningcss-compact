@@ -1,0 +1,48 @@
+[package]
+name = "lightningcss-compact"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+description = "Cascade-preserving, compression-driven class and declaration factoring for Lightning CSS"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/eng-manager-xyz/lightningcss-compact"
+readme = "README.md"
+keywords = ["css", "lightningcss", "minify", "atomic-css", "compression"]
+categories = ["web-programming", "development-tools::build-utils"]
+include = ["src/**", "tests/**", "examples/**", "evaluation/**", "scripts/**", "docs/**", "licenses/**", "README.md", "CONTRIBUTING.md", "CHANGELOG.md", "LICENSE-*", "NOTICE", "THIRD-PARTY.md", "Cargo.toml", "Cargo.lock"]
+
+[features]
+default = []
+cli = ["dep:clap", "dep:same-file", "dep:unicode-normalization"]
+
+[dependencies]
+lightningcss = { version = "=1.0.0-alpha.72", default-features = false, features = ["visitor", "into_owned", "sourcemap"] }
+static-self = "0.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+brotli = "8"
+flate2 = "1"
+lol_html = "2"
+parcel_selectors = "=0.28.3"
+parcel_sourcemap = { version = "2", features = ["json"] }
+thiserror = "2"
+clap = { version = "4", features = ["derive"], optional = true }
+same-file = { version = "1.0.6", optional = true }
+unicode-normalization = { version = "0.1", optional = true }
+
+[[bin]]
+name = "lightningcss-compact"
+path = "src/bin/compact.rs"
+required-features = ["cli"]
+
+[[example]]
+name = "stock-control"
+path = "evaluation/stock-control.rs"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+lto = "thin"
+strip = "symbols"
