@@ -135,6 +135,163 @@ fn class_string_observers_preserve_unmatched_boundary_whitespace() {
 }
 
 #[test]
+fn uppercase_and_namespaced_class_observers_keep_their_matching_identities() {
+    let left = "long-left-observed-owner";
+    let right = "long-right-unobserved-owner";
+    for observer in [
+        format!("[CLASS~=\"{left}\"]"),
+        format!("[ClAsS$=\"{left}\"]"),
+        format!("[CLASS~=\"{}\" i]", left.to_ascii_uppercase()),
+        format!("[*|CLASS~=\"{left}\"]"),
+    ] {
+        let mut input = project(
+            &format!(".{left}{{height:100px}}.{right}{{height:100px}}{observer}{{color:green}}"),
+            &format!("<div class=\"{left}\">left</div><div class=\"{right}\">right</div>")
+                .repeat(20),
+            &[left, right],
+        );
+        input.bindings.push(BindingInput {
+            id: "observer".into(),
+            kind: BindingKind::Selector,
+            value: observer.clone(),
+        });
+        let result = compile_project(
+            input,
+            Options {
+                mode: Mode::Naming,
+                ..Default::default()
+            },
+        )
+        .expect("conservative HTML attribute observation");
+        assert_eq!(result.manifest.classes[left], vec![left], "{observer}");
+        assert!(result.bindings["document"].contains(&format!("class=\"{left}\"")));
+        assert_ne!(
+            result.manifest.classes[right],
+            vec![right],
+            "unobserved owner should still shorten"
+        );
+    }
+}
+
+#[test]
+fn immutable_selector_subtrees_inventory_complete_class_observations() {
+    let left = "long-left-observed-owner";
+    let right = "long-right-unobserved-owner";
+    for observer in [
+        format!(":nth-child(1 of [class~=\"{left}\"])"),
+        format!(":nth-last-child(1 of :is([CLASS$=\"{left}\"],.other))"),
+        format!("video::cue(.{left})"),
+        format!("video::cue-region([class~=\"{left}\"])"),
+    ] {
+        let mut input = project(
+            &format!(".{left}{{height:100px}}.{right}{{height:100px}}{observer}{{color:green}}"),
+            &format!("<div class=\"{left}\">left</div><div class=\"{right}\">right</div>")
+                .repeat(20),
+            &[left, right],
+        );
+        input.bindings.push(BindingInput {
+            id: "observer".into(),
+            kind: BindingKind::Selector,
+            value: observer.clone(),
+        });
+        let result = compile_project(
+            input,
+            Options {
+                mode: Mode::Naming,
+                ..Default::default()
+            },
+        )
+        .expect("immutable selector observation");
+        assert_eq!(result.manifest.classes[left], vec![left], "{observer}");
+        assert!(result.bindings["document"].contains(&format!("class=\"{left}\"")));
+        assert_ne!(
+            result.manifest.classes[right],
+            vec![right],
+            "unobserved owner should still shorten"
+        );
+    }
+    let discovered = lightningcss_compact::discover_classes(
+        "video::cue(.cue-owner),video::cue-region(.region-owner){color:red}",
+    )
+    .unwrap();
+    assert!(discovered.contains("cue-owner"));
+    assert!(discovered.contains("region-owner"));
+}
+
+#[test]
+fn immutable_class_string_observers_preserve_unmatched_whitespace_and_new_name_exclusions() {
+    let owner = "long-managed-boundary-owner";
+    let html = format!("<div class=\"{owner} foo \">trailing</div>").repeat(20);
+    let input = project(
+        &format!(".{owner}{{height:100px}}:nth-child(1 of [class$=\"foo\"]){{color:red}}:nth-child(1 of [CLASS^=\"a\"]){{color:blue}}"),
+        &html,
+        &[owner],
+    );
+    let result =
+        compile_project(input, Options::default()).expect("immutable raw string observations");
+    assert_eq!(result.bindings["document"], html);
+    assert_eq!(result.manifest.classes[owner], vec![owner]);
+}
+
+#[test]
+fn css_attr_class_observers_preserve_complete_authored_class_strings() {
+    let left = "long-left-attr-owner";
+    let right = "long-right-attr-owner";
+    let html = format!("<div class=\" {left}  {right} {left} \">both</div>").repeat(20);
+    for observer in [
+        "content:attr(class)",
+        "content:ATTR(CLASS)",
+        "content:a\\74tr( cl\\61ss )",
+        "--label:attr(class);content:var(--label)",
+        "--label:attr( /* comment */ CLASS );content:var(--label)",
+        "content:var(--missing,attr(class))",
+    ] {
+        for mode in [Mode::Naming, Mode::Compact] {
+            let input = project(
+                &format!(".{left}{{color:red;height:100px}}.{right}{{color:red;height:100px}}div::before{{{observer}}}"),
+                &html,
+                &[left, right],
+            );
+            let result = compile_project(
+                input,
+                Options {
+                    mode,
+                    ..Default::default()
+                },
+            )
+            .expect("class-string content observation");
+            assert_eq!(result.bindings["document"], html, "{observer} / {mode:?}");
+            for owner in [left, right] {
+                assert_eq!(
+                    result.manifest.classes[owner],
+                    vec![owner],
+                    "{observer} / {mode:?}"
+                );
+            }
+        }
+    }
+}
+
+#[test]
+fn css_attr_of_an_unrelated_attribute_does_not_disable_class_naming() {
+    let owner = "long-managed-data-attribute-owner";
+    let input = project(
+        &format!(".{owner}{{height:100px}}div::before{{content:attr(data-label)}}"),
+        &format!("<div class=\"{owner}\" data-label=\"label\">owner</div>").repeat(20),
+        &[owner],
+    );
+    let result = compile_project(
+        input,
+        Options {
+            mode: Mode::Naming,
+            ..Default::default()
+        },
+    )
+    .unwrap();
+    assert_ne!(result.manifest.classes[owner], vec![owner]);
+}
+
+#[test]
 fn noscript_fallback_classes_keep_identity_and_raw_source() {
     let fallback = "<noscript><div class=\"left\">Fallback &amp; literal markup.</div><div class=\"a\">Foreign fallback.</div></noscript>";
     let html = format!("<div class=\"left\">left</div><div class=\"right\">right</div>{fallback}");

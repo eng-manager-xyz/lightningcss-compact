@@ -1,6 +1,7 @@
 use crate::Error;
 use lightningcss::{
-    selector::{Component, Selector, SelectorList},
+    properties::custom::{Function, Token, TokenList, TokenOrValue},
+    selector::{Component, PseudoClass, PseudoElement, Selector, SelectorList},
     stylesheet::{MinifyOptions, ParserOptions, PrinterOptions, StyleSheet},
     traits::{ParseWithOptions, ToCss},
     visitor::{Visit, VisitTypes, Visitor},
@@ -170,6 +171,15 @@ pub(crate) fn classes_in(selector: &Selector<'_>) -> BTreeSet<String> {
                 found.extend(classes_in(item));
             }
         }
+        if let Component::PseudoElement(
+            PseudoElement::CueFunction { selector } | PseudoElement::CueRegionFunction { selector },
+        )
+        | Component::NonTSPseudoClass(
+            PseudoClass::Local { selector } | PseudoClass::Global { selector },
+        ) = component
+        {
+            found.extend(classes_in(selector));
+        }
     });
     found
 }
@@ -242,6 +252,7 @@ pub(crate) struct Usage {
     pub observed: BTreeSet<String>,
     pub reserved: BTreeSet<String>,
     pub attributes: Vec<ClassObservation>,
+    pub reads_class_attribute: bool,
     style_context: bool,
 }
 
@@ -331,10 +342,110 @@ pub(crate) fn html_classes(value: &str) -> Result<HtmlClassLists, Error> {
     inventory(value, 0)
 }
 
+impl Usage {
+    // Some upstream selector subtrees cannot be rewritten by our adapter.
+    // Inventory their complete observations and pin class identities instead.
+    fn observe_selector(&mut self, selector: &Selector<'_>, immutable: bool) {
+        for component in selector.iter_raw_match_order() {
+            match component {
+                Component::Class(name) => {
+                    self.all.insert(name.0.to_string());
+                    if !self.style_context || immutable {
+                        self.observed.insert(name.0.to_string());
+                    }
+                    if immutable {
+                        self.reserved.insert(name.0.to_string());
+                    }
+                }
+                Component::AttributeInNoNamespace {
+                    local_name,
+                    operator,
+                    value,
+                    case_sensitivity,
+                    ..
+                } if local_name.0.eq_ignore_ascii_case("class") => {
+                    let insensitive = matches!(
+                        case_sensitivity,
+                        ParsedCaseSensitivity::AsciiCaseInsensitive
+                            | ParsedCaseSensitivity::AsciiCaseInsensitiveIfInHtmlElementInHtmlDocument
+                    );
+                    if *operator == AttrSelectorOperator::Includes && !insensitive && !immutable {
+                        self.observed.insert(value.0.to_string());
+                        self.all.insert(value.0.to_string());
+                    } else {
+                        self.reserved
+                            .extend(value.0.split_ascii_whitespace().map(str::to_string));
+                        self.attributes.push(ClassObservation {
+                            operator: *operator,
+                            value: value.0.to_string(),
+                            insensitive,
+                        });
+                    }
+                }
+                Component::AttributeOther(attribute)
+                    if attribute.local_name.0.eq_ignore_ascii_case("class") =>
+                {
+                    // Uppercase and namespaced attributes use this upstream
+                    // variant. Preserve their values and all matching names.
+                    if let ParsedAttrSelectorOperation::WithValue {
+                        operator,
+                        expected_value,
+                        case_sensitivity,
+                    } = &attribute.operation
+                    {
+                        self.reserved.extend(
+                            expected_value
+                                .0
+                                .split_ascii_whitespace()
+                                .map(str::to_string),
+                        );
+                        self.attributes.push(ClassObservation {
+                            operator: *operator,
+                            value: expected_value.0.to_string(),
+                            insensitive: matches!(case_sensitivity,
+                                ParsedCaseSensitivity::AsciiCaseInsensitive
+                                    | ParsedCaseSensitivity::AsciiCaseInsensitiveIfInHtmlElementInHtmlDocument),
+                        });
+                    }
+                }
+                Component::Is(items)
+                | Component::Where(items)
+                | Component::Negation(items)
+                | Component::Has(items)
+                | Component::Any(_, items) => {
+                    for item in items.iter() {
+                        self.observe_selector(item, immutable);
+                    }
+                }
+                Component::Slotted(item) | Component::Host(Some(item)) => {
+                    self.observe_selector(item, immutable);
+                }
+                Component::NthOf(items) => {
+                    for item in items.selectors() {
+                        self.observe_selector(item, true);
+                    }
+                }
+                Component::PseudoElement(
+                    PseudoElement::CueFunction { selector }
+                    | PseudoElement::CueRegionFunction { selector },
+                )
+                | Component::NonTSPseudoClass(
+                    PseudoClass::Local { selector } | PseudoClass::Global { selector },
+                ) => self.observe_selector(selector, true),
+                _ => {}
+            }
+        }
+    }
+}
+
 impl<'i> Visitor<'i> for Usage {
     type Error = Error;
     fn visit_types(&self) -> VisitTypes {
-        VisitTypes::RULES | VisitTypes::SELECTORS | VisitTypes::SUPPORTS_CONDITIONS
+        VisitTypes::RULES
+            | VisitTypes::SELECTORS
+            | VisitTypes::SUPPORTS_CONDITIONS
+            | VisitTypes::FUNCTIONS
+            | VisitTypes::TOKENS
     }
     fn visit_rule(&mut self, rule: &mut lightningcss::rules::CssRule<'i>) -> Result<(), Error> {
         let previous = self.style_context;
@@ -351,58 +462,32 @@ impl<'i> Visitor<'i> for Usage {
         result
     }
     fn visit_selector(&mut self, selector: &mut Selector<'i>) -> Result<(), Error> {
-        walk(selector, &mut |component| match component {
-            Component::Class(name) => {
-                self.all.insert(name.0.to_string());
-                if !self.style_context {
-                    self.observed.insert(name.0.to_string());
-                }
-            }
-            Component::NthOf(data) => {
-                for item in data.selectors() {
-                    self.reserved.extend(classes_in(item));
-                }
-            }
-            Component::AttributeInNoNamespace {
-                local_name,
-                operator,
-                value,
-                case_sensitivity,
-                ..
-            } if local_name.0.as_ref() == "class" => {
-                let insensitive = matches!(
-                    case_sensitivity,
-                    ParsedCaseSensitivity::AsciiCaseInsensitive
-                        | ParsedCaseSensitivity::AsciiCaseInsensitiveIfInHtmlElementInHtmlDocument
-                );
-                if *operator == AttrSelectorOperator::Includes && !insensitive {
-                    self.observed.insert(value.0.to_string());
-                    self.all.insert(value.0.to_string());
-                } else {
-                    // Pinned names do not acquire atoms, preserving class-string
-                    // comparisons as well as the token identity itself.
-                    self.reserved
-                        .extend(value.0.split_whitespace().map(str::to_string));
-                    self.attributes.push(ClassObservation {
-                        operator: *operator,
-                        value: value.0.to_string(),
-                        insensitive,
-                    });
-                }
-            }
-            Component::AttributeOther(attribute) if attribute.local_name.0.as_ref() == "class" => {
-                if let ParsedAttrSelectorOperation::WithValue {
-                    operator,
-                    expected_value,
-                    case_sensitivity,
-                } = &attribute.operation
-                {
-                    self.attributes.push(ClassObservation { operator: *operator, value: expected_value.0.to_string(), insensitive: matches!(case_sensitivity, ParsedCaseSensitivity::AsciiCaseInsensitive | ParsedCaseSensitivity::AsciiCaseInsensitiveIfInHtmlElementInHtmlDocument) });
-                }
-            }
-            _ => {}
-        });
+        self.observe_selector(selector, false);
         Ok(())
+    }
+    fn visit_function(&mut self, function: &mut Function<'i>) -> Result<(), Error> {
+        if function.name.0.eq_ignore_ascii_case("attr")
+            && matches!(function.arguments.0.iter().find(|token| !matches!(token,
+                TokenOrValue::Token(Token::WhiteSpace(_) | Token::Comment(_)))),
+                Some(TokenOrValue::Token(Token::Ident(name))) if name.eq_ignore_ascii_case("class"))
+        {
+            self.reads_class_attribute = true;
+        }
+        function.visit_children(self)
+    }
+    fn visit_token_list(&mut self, tokens: &mut TokenList<'i>) -> Result<(), Error> {
+        // Raw token lists preserve function boundaries rather than Function
+        // nodes. CSS escapes are already decoded by the upstream parser.
+        for (index, token) in tokens.0.iter().enumerate() {
+            if matches!(token, TokenOrValue::Token(Token::Function(name)) if name.eq_ignore_ascii_case("attr"))
+                && matches!(tokens.0[index + 1..].iter().find(|token| !matches!(token,
+                    TokenOrValue::Token(Token::WhiteSpace(_) | Token::Comment(_)))),
+                    Some(TokenOrValue::Token(Token::Ident(name))) if name.eq_ignore_ascii_case("class"))
+            {
+                self.reads_class_attribute = true;
+            }
+        }
+        tokens.visit_children(self)
     }
     fn visit_supports_condition(
         &mut self,

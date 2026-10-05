@@ -947,6 +947,12 @@ pub(crate) fn compile(input: &ProjectInput, options: &Options) -> Result<Planned
     observed.extend(usage.observed.clone());
     let mut reserved = input.reserved_classes.clone();
     reserved.extend(usage.reserved);
+    if usage.reads_class_attribute {
+        // attr(class) observes the complete authored string, including token
+        // order, repeated tokens and whitespace. Renaming or atoms would alter
+        // generated content or any value routed through a custom property.
+        reserved.extend(usage.all.iter().cloned());
+    }
     observed.extend(dynamic.clone());
     for attribute in &usage.attributes {
         // Whole class-string comparisons retain ordering, duplicate tokens and
