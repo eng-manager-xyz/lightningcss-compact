@@ -55,6 +55,24 @@ observe whole or partial class strings constrain both existing identities and
 newly generated names. Reserved or dynamic owners never acquire an inseparable
 expanded atom list.
 
+CSS `attr()` can observe an entire class string, including duplicate tokens and
+whitespace. Literal `class` names, namespaced names, dynamic substitutions, and
+unknown attribute-name syntax reserve every supplied class identity and prevent
+class-list expansion throughout the project. Only a proven literal unrelated
+identifier, with a literal argument boundary or type, avoids this barrier;
+`attr(data-label)` remains renamable. Parsed functions and raw custom-property
+tokens use the same classification after CSS escapes are decoded. The report
+includes a diagnostic when this project-wide barrier applies. This does not
+resolve custom properties or attempt to determine an ambiguous name at runtime.
+
+Uppercase and namespaced class attributes, and class observations inside
+immutable `:nth-child(... of ...)`, cue, or CSS-module selector subtrees, preserve
+the observed class strings. A declaration or custom-property token containing
+`attr(class)` reserves the whole supplied project namespace and class membership:
+generated content can observe token order, duplicates, and whitespace as well
+as names. Escaped and uppercase forms receive the same conservative treatment;
+unrelated attribute reads still permit naming optimization.
+
 Renamable identities and atoms start with a frequency allocation based on CSS
 selector occurrences and bound usages. Equal frequencies use authored-name
 order. Available names follow `a` through `z`, `A` through `Z`, then `aa`, `ab`,

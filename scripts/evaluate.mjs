@@ -202,7 +202,10 @@ async function visit(route, viewport, state, compiled) {
 }
 async function snapshot(compiled, fixture) {
     const selectors = Object.fromEntries(fixture.input.bindings.filter(binding => binding.kind === 'selector').map(binding => [binding.id, compiled.bindings[binding.id]]));
-    const observedProperties = [...new Set([fixture.expectedStyles, ...fixture.states.map(state => state.expectedStyles || {})].flatMap(styles => Object.values(styles).flatMap(properties => Object.keys(properties))))];
+    const observedProperties = [...new Set([
+        ...[fixture.expectedStyles, ...fixture.states.map(state => state.expectedStyles || {})].flatMap(styles => Object.values(styles).flatMap(properties => Object.keys(properties))),
+        ...Object.values(fixture.expectedPseudoStyles).flatMap(pseudos => Object.values(pseudos).flatMap(properties => Object.keys(properties))),
+    ])];
     return evaluate(`(()=>{
         const all=[...document.querySelectorAll('[data-probe]')],sample=all.length<=32?all:all.filter((_,index)=>index%Math.ceil(all.length/30)===0||index===all.length-1);
         const styles=(node,pseudo)=>{const style=getComputedStyle(node,pseudo),out={};for(const property of style)out[property]=style.getPropertyValue(property);for(const property of ${JSON.stringify(observedProperties)})out[property]=style.getPropertyValue(property);return out;};
@@ -292,6 +295,10 @@ try {
             for (const [probe, properties] of Object.entries({ ...fixture.expectedStyles, ...state.expectedStyles })) for (const [property, value] of Object.entries(properties)) {
                 const actual = source.probes[probe]?.style[property];
                 if (actual !== value) throw Error(`Authored regression precondition failed: ${stem} ${probe}.${property}; expected ${value}, observed ${actual}`);
+            }
+            for (const [probe, pseudos] of Object.entries(fixture.expectedPseudoStyles)) for (const [pseudo, properties] of Object.entries(pseudos)) for (const [property, value] of Object.entries(properties)) {
+                const actual = source.probes[probe]?.[pseudo]?.[property];
+                if (actual !== value) throw Error(`Authored pseudo regression precondition failed: ${stem} ${probe}.${pseudo}.${property}; expected ${value}, observed ${actual}`);
             }
             const sourcePng = await capture(join(output, `${stem}-original.png`));
             const beforeReady = await visit(routes.baseline, viewport, state, baseline);

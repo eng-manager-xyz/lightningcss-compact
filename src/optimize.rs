@@ -948,9 +948,9 @@ pub(crate) fn compile(input: &ProjectInput, options: &Options) -> Result<Planned
     let mut reserved = input.reserved_classes.clone();
     reserved.extend(usage.reserved);
     if usage.reads_class_attribute {
-        // attr(class) observes the complete authored string, including token
-        // order, repeated tokens and whitespace. Renaming or atoms would alter
-        // generated content or any value routed through a custom property.
+        // Explicit or ambiguous attr() names can observe the complete authored
+        // class string, including token order, repeated tokens and whitespace.
+        // Renaming or atoms would alter values routed through custom properties.
         reserved.extend(usage.all.iter().cloned());
     }
     observed.extend(dynamic.clone());
@@ -1010,6 +1010,12 @@ pub(crate) fn compile(input: &ProjectInput, options: &Options) -> Result<Planned
         stylesheet: None,
         reason: "Lightning CSS alpha.72 minification uses temporary rule boundaries to avoid stale deduplication keys; boundaries are removed before printing in every mode".into(),
     });
+    if usage.reads_class_attribute {
+        report.diagnostics.push(Diagnostic {
+            stylesheet: None,
+            reason: "CSS attr() reads class or has a namespace/dynamic/unknown attribute name: all supplied class identities and class-list membership preserved".into(),
+        });
+    }
     if !input.complete_usage && options.mode != Mode::Baseline {
         report.diagnostics.push(Diagnostic {
             stylesheet: None,

@@ -245,6 +245,14 @@ fn css_attr_class_observers_preserve_complete_authored_class_strings() {
         "--label:attr(class);content:var(--label)",
         "--label:attr( /* comment */ CLASS );content:var(--label)",
         "content:var(--missing,attr(class))",
+        "content:attr(|class)",
+        "content:attr(svg|class)",
+        "content:attr(svg|data-label)",
+        "--attribute:class;content:attr(var(--attribute))",
+        "--attribute:class;--label:attr(var(--attribute));content:var(--label)",
+        "--attribute:class;content:var(--missing,attr(var(--attribute)))",
+        "--attribute:class;--label:a\\74tr(var(--attribute));content:var(--label)",
+        "content:attr(data-label var(--unknown-namespace))",
     ] {
         for mode in [Mode::Naming, Mode::Compact] {
             let input = project(
@@ -261,6 +269,11 @@ fn css_attr_class_observers_preserve_complete_authored_class_strings() {
             )
             .expect("class-string content observation");
             assert_eq!(result.bindings["document"], html, "{observer} / {mode:?}");
+            assert!(result
+                .report
+                .diagnostics
+                .iter()
+                .any(|diagnostic| { diagnostic.reason.contains("CSS attr() reads class") }));
             for owner in [left, right] {
                 assert_eq!(
                     result.manifest.classes[owner],
@@ -275,20 +288,34 @@ fn css_attr_class_observers_preserve_complete_authored_class_strings() {
 #[test]
 fn css_attr_of_an_unrelated_attribute_does_not_disable_class_naming() {
     let owner = "long-managed-data-attribute-owner";
-    let input = project(
-        &format!(".{owner}{{height:100px}}div::before{{content:attr(data-label)}}"),
-        &format!("<div class=\"{owner}\" data-label=\"label\">owner</div>").repeat(20),
-        &[owner],
-    );
-    let result = compile_project(
-        input,
-        Options {
-            mode: Mode::Naming,
-            ..Default::default()
-        },
-    )
-    .unwrap();
-    assert_ne!(result.manifest.classes[owner], vec![owner]);
+    for observer in [
+        "content:attr(data-label)",
+        "content:attr(data-label raw-string)",
+        "content:attr(data-label type(<string>))",
+        "content:attr(data-label,\"fallback\")",
+        "--label:attr(data-label);content:var(--label)",
+        "content:a\\74tr(data-l\\61bel)",
+    ] {
+        let input = project(
+            &format!(".{owner}{{height:100px}}div::before{{{observer}}}"),
+            &format!("<div class=\"{owner}\" data-label=\"label\">owner</div>").repeat(20),
+            &[owner],
+        );
+        let result = compile_project(
+            input,
+            Options {
+                mode: Mode::Naming,
+                ..Default::default()
+            },
+        )
+        .unwrap();
+        assert_ne!(result.manifest.classes[owner], vec![owner], "{observer}");
+        assert!(!result
+            .report
+            .diagnostics
+            .iter()
+            .any(|diagnostic| { diagnostic.reason.contains("CSS attr() reads class") }));
+    }
 }
 
 #[test]

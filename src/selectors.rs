@@ -438,6 +438,38 @@ impl Usage {
     }
 }
 
+fn attr_may_read_class(arguments: &[TokenOrValue<'_>]) -> bool {
+    let mut significant = arguments.iter().filter(|token| {
+        !matches!(
+            token,
+            TokenOrValue::Token(Token::WhiteSpace(_) | Token::Comment(_))
+        )
+    });
+    let Some(TokenOrValue::Token(Token::Ident(name))) = significant.next() else {
+        // Null namespaces, substitutions and unknown first-argument syntax
+        // cannot prove an unrelated literal attribute name.
+        return true;
+    };
+    if name.eq_ignore_ascii_case("class") {
+        return true;
+    }
+    match significant.next() {
+        // These literal boundaries/types leave the unrelated identifier as the
+        // entire attribute name. Namespaces and arbitrary substitutions do not.
+        None
+        | Some(TokenOrValue::Token(
+            Token::Comma | Token::CloseParenthesis | Token::Ident(_) | Token::Delim('%'),
+        )) => false,
+        Some(TokenOrValue::Function(function)) if function.name.0.eq_ignore_ascii_case("type") => {
+            false
+        }
+        Some(TokenOrValue::Token(Token::Function(name))) if name.eq_ignore_ascii_case("type") => {
+            false
+        }
+        _ => true,
+    }
+}
+
 impl<'i> Visitor<'i> for Usage {
     type Error = Error;
     fn visit_types(&self) -> VisitTypes {
@@ -467,9 +499,7 @@ impl<'i> Visitor<'i> for Usage {
     }
     fn visit_function(&mut self, function: &mut Function<'i>) -> Result<(), Error> {
         if function.name.0.eq_ignore_ascii_case("attr")
-            && matches!(function.arguments.0.iter().find(|token| !matches!(token,
-                TokenOrValue::Token(Token::WhiteSpace(_) | Token::Comment(_)))),
-                Some(TokenOrValue::Token(Token::Ident(name))) if name.eq_ignore_ascii_case("class"))
+            && attr_may_read_class(&function.arguments.0)
         {
             self.reads_class_attribute = true;
         }
@@ -480,9 +510,7 @@ impl<'i> Visitor<'i> for Usage {
         // nodes. CSS escapes are already decoded by the upstream parser.
         for (index, token) in tokens.0.iter().enumerate() {
             if matches!(token, TokenOrValue::Token(Token::Function(name)) if name.eq_ignore_ascii_case("attr"))
-                && matches!(tokens.0[index + 1..].iter().find(|token| !matches!(token,
-                    TokenOrValue::Token(Token::WhiteSpace(_) | Token::Comment(_)))),
-                    Some(TokenOrValue::Token(Token::Ident(name))) if name.eq_ignore_ascii_case("class"))
+                && attr_may_read_class(&tokens.0[index + 1..])
             {
                 self.reads_class_attribute = true;
             }

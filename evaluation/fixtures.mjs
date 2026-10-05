@@ -17,6 +17,7 @@ function fixture(id, css, markup, managedClasses, options = {}) {
         viewports: options.viewports || [{ id: 'desktop', width: 960, height: 720 }, { id: 'mobile', width: 390, height: 844 }],
         requiredSupport: options.requiredSupport || [],
         expectedStyles: options.expectedStyles || {},
+        expectedPseudoStyles: options.expectedPseudoStyles || {},
         ...options.expected && { expected: options.expected },
     };
 }
@@ -79,7 +80,25 @@ export function fixtures() {
             expectedStyles: { trailing: { color: 'rgb(0, 0, 0)', 'border-left-width': '0px' }, leading: { color: 'rgb(0, 0, 0)', 'border-left-width': '0px' }, both: { color: 'rgb(0, 0, 0)', 'border-left-width': '0px' } },
         }),
         fixture('attribute-selector-hook', '.left{color:red;height:100px}.right{color:red;height:100px}', box('left', 'left') + box('right', 'right'), ['left', 'right'], { bindings: [{ id: 'hook', kind: 'selector', value: '[class~="left"]' }, { id: 'nested-hook', kind: 'selector', value: ':is([class~="right"],.left):not(:has(>.missing))' }] }),
+        fixture('uppercase-class-attribute-observer', '.uppercaseLeftOwner{color:red;height:100px}.uppercaseRightOwner{color:red;height:100px}[CLASS~="uppercaseLeftOwner"]{border:3px solid green}[*|CLASS~="uppercaseRightOwner"]{outline:4px solid blue}', Array.from({ length: 12 }, (_, index) => box(index ? `uppercase-left-${index}` : 'uppercase-left', 'uppercaseLeftOwner') + box(index ? `uppercase-right-${index}` : 'uppercase-right', 'uppercaseRightOwner')).join(''), ['uppercaseLeftOwner', 'uppercaseRightOwner'], {
+            bindings: [{ id: 'uppercase-hook', kind: 'selector', value: '[CLASS~="uppercaseLeftOwner"]' }, { id: 'namespace-uppercase-hook', kind: 'selector', value: '[*|CLASS~="uppercaseRightOwner"]' }],
+            expectedStyles: { 'uppercase-left': { color: 'rgb(255, 0, 0)', 'border-left-width': '3px', 'border-left-color': 'rgb(0, 128, 0)' }, 'uppercase-right': { color: 'rgb(255, 0, 0)', 'outline-width': '4px', 'outline-color': 'rgb(0, 0, 255)' } },
+        }),
+        fixture('immutable-nth-class-attribute-observer', '.nthLeftOwner{color:red;height:100px}.nthRightOwner{color:red;height:100px}.nthBoundaryOwner{height:100px}:nth-child(1 of [class~="nthLeftOwner"]){border:3px solid green}:nth-last-child(1 of :is([class~="nthRightOwner"])){outline:4px solid blue}:nth-child(1 of [class$="foo"]){background:purple}:nth-child(1 of [CLASS^="a"]){padding:30px}', Array.from({ length: 12 }, (_, index) => box(index ? `nth-left-${index}` : 'nth-left', 'nthLeftOwner')).join('') + Array.from({ length: 12 }, (_, index) => box(index < 11 ? `nth-right-${index}` : 'nth-right', 'nthRightOwner')).join('') + box('nth-boundary', 'nthBoundaryOwner foo ') + box('nth-actual-suffix', 'other foo'), ['nthLeftOwner', 'nthRightOwner', 'nthBoundaryOwner'], {
+            requiredSupport: ['selector(:nth-child(1 of [class~="nthLeftOwner"]))', 'selector(:nth-last-child(1 of :is([class~="nthRightOwner"])))'],
+            bindings: [{ id: 'nth-hook', kind: 'selector', value: ':nth-child(1 of [class~="nthLeftOwner"])' }, { id: 'nth-last-hook', kind: 'selector', value: ':nth-last-child(1 of :is([class~="nthRightOwner"]))' }, { id: 'nth-suffix-hook', kind: 'selector', value: ':nth-child(1 of [class$="foo"])' }],
+            expectedStyles: { 'nth-left': { color: 'rgb(255, 0, 0)', 'border-left-width': '3px', 'border-left-color': 'rgb(0, 128, 0)', 'padding-left': '0px' }, 'nth-right': { color: 'rgb(255, 0, 0)', 'outline-width': '4px', 'outline-color': 'rgb(0, 0, 255)', 'padding-left': '0px' }, 'nth-boundary': { 'background-color': 'rgba(0, 0, 0, 0)' }, 'nth-actual-suffix': { 'background-color': 'rgb(128, 0, 128)' } },
+        }),
         fixture('empty-attribute-values', '.left{color:red;height:100px}.right{color:red;height:100px}[class^=""]{color:blue}[class*=""]{display:none}[class$=""]{height:20px}', box('left', 'left') + box('right', 'right'), ['left', 'right'], { bindings: [{ id: 'empty-hook', kind: 'selector', value: '[class^=""],[class*=""],[class$=""]' }] }),
+        ...[
+            ['direct', 'content:attr(class)'],
+            ['custom-property', '--class-label:attr(CLASS);content:var(--class-label)'],
+            ['escaped', 'content:a\\74tr(cl\\61ss)'],
+        ].map(([kind, declaration]) => fixture(`generated-class-content-${kind}`, `.attrLeftOwner{color:red;height:100px}.attrRightOwner{color:red;height:100px}div::before{display:block;white-space:pre-wrap;color:blue;${declaration}}`, Array.from({ length: 12 }, (_, index) => box(index ? `attr-left-${index}` : 'attr-left', ' attrLeftOwner  attrRightOwner attrLeftOwner ') + box(index ? `attr-right-${index}` : 'attr-right', 'attrRightOwner')).join(''), ['attrLeftOwner', 'attrRightOwner'], {
+            requiredSupport: [kind === 'custom-property' ? 'content:attr(CLASS)' : declaration],
+            expectedStyles: { 'attr-left': { color: 'rgb(255, 0, 0)', height: '100px' }, 'attr-right': { color: 'rgb(255, 0, 0)', height: '100px' } },
+            expectedPseudoStyles: { 'attr-left': { before: { content: JSON.stringify(' attrLeftOwner  attrRightOwner attrLeftOwner '), display: 'block', color: 'rgb(0, 0, 255)', 'white-space': 'pre-wrap' } }, 'attr-right': { before: { content: JSON.stringify('attrRightOwner'), display: 'block', color: 'rgb(0, 0, 255)', 'white-space': 'pre-wrap' } } },
+        })),
         fixture('noscript-raw-content', cssPair, box('left', 'left') + box('right', 'right') + '<noscript data-probe="noscript"><div data-probe="fallback-left" class="left">Static fallback &amp; literal markup.</div><div data-probe="fallback-foreign" class="a">Foreign fallback.</div></noscript>', ['left', 'right'], {
             expectedStyles: { left: { color: 'rgb(255, 0, 0)', height: '100px' }, right: { color: 'rgb(255, 0, 0)', height: '100px' } },
             states: [
