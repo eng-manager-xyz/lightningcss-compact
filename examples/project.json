@@ -1,0 +1,7 @@
+{
+  "stylesheets": [{"id": "cards.css", "source": ".left{color:red;height:100px}.right{color:red;height:100px}"}],
+  "bindings": [{"id": "document", "kind": "html", "value": "<main><div data-probe=\"left\" class=\"left\">left</div><div data-probe=\"right\" class=\"right\">right</div></main>"}],
+  "managed_classes": ["left", "right"],
+  "complete_usage": true,
+  "load_groups": [["cards.css"]]
+}

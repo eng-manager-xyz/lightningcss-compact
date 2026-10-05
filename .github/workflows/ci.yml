@@ -1,0 +1,131 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "codex/**"]
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}"
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: "1"
+
+jobs:
+  rust:
+    name: "Rust ${{ matrix.toolchain }} / ${{ matrix.os }}"
+    runs-on: "${{ matrix.os }}"
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-14, windows-2022]
+        toolchain: ["1.88.0", stable]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "${{ matrix.toolchain }}"
+          components: rustfmt, clippy
+      - name: Format
+        run: cargo +${{ matrix.toolchain }} fmt --all --check
+      - name: Clippy
+        run: cargo +${{ matrix.toolchain }} clippy --locked --all-targets --all-features -- -D warnings
+      - name: Full feature tests
+        run: cargo +${{ matrix.toolchain }} test --locked --all-features
+      - name: Library without default features
+        run: cargo +${{ matrix.toolchain }} test --locked --no-default-features
+      - name: Verify dependency notices
+        run: python scripts/third-party-licenses.py --check
+      - name: Package inventory
+        run: cargo +${{ matrix.toolchain }} package --locked --list
+      - name: Build and verify Cargo package
+        run: cargo +${{ matrix.toolchain }} package --locked
+      - name: Unpack verified package
+        env:
+          SMOKE_TOOLCHAIN: "${{ matrix.toolchain }}"
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import pathlib
+          import subprocess
+          import tarfile
+
+          toolchain = os.environ['SMOKE_TOOLCHAIN']
+          metadata = json.loads(subprocess.check_output([
+              'cargo', '+' + toolchain, 'metadata', '--locked',
+              '--format-version', '1', '--no-deps',
+          ]))
+          package = next(p for p in metadata['packages'] if p['name'] == 'lightningcss-compact')
+          archive = pathlib.Path(metadata['target_directory']) / 'package' / (
+              package['name'] + '-' + package['version'] + '.crate'
+          )
+          destination = pathlib.Path(metadata['target_directory']) / 'package-smoke' / toolchain
+          destination.mkdir(parents=True, exist_ok=True)
+          with tarfile.open(archive, 'r:gz') as source:
+              for member in source.getmembers():
+                  parts = pathlib.PurePosixPath(member.name).parts
+                  if member.name.startswith('/') or '\\' in member.name or '..' in parts or not (member.isfile() or member.isdir()):
+                      raise RuntimeError('Unsafe archive member: ' + member.name)
+              source.extractall(destination)
+          unpacked = destination / (package['name'] + '-' + package['version'])
+          for required in ['Cargo.toml', 'README.md', 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE']:
+              if not (unpacked / required).is_file():
+                  raise RuntimeError('Cargo package is missing ' + required)
+          install = destination / 'install'
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as output:
+              output.write('PACKAGED_DIR=' + str(unpacked.resolve()) + '\n')
+              output.write('INSTALL_ROOT=' + str(install.resolve()) + '\n')
+              output.write('EXE_SUFFIX=' + ('.exe' if os.name == 'nt' else '') + '\n')
+          PY
+      - name: Install CLI from packaged sources
+        run: cargo +${{ matrix.toolchain }} install --path "$PACKAGED_DIR" --features cli --locked --root "$INSTALL_ROOT"
+      - name: Installed CLI smoke
+        run: |
+          "$INSTALL_ROOT/bin/lightningcss-compact$EXE_SUFFIX" --version
+          "$INSTALL_ROOT/bin/lightningcss-compact$EXE_SUFFIX" --help
+          "$INSTALL_ROOT/bin/lightningcss-compact$EXE_SUFFIX" analyze --help
+          "$INSTALL_ROOT/bin/lightningcss-compact$EXE_SUFFIX" build --help
+          "$INSTALL_ROOT/bin/lightningcss-compact$EXE_SUFFIX" check --help
+          "$INSTALL_ROOT/bin/lightningcss-compact$EXE_SUFFIX" eval --help
+          "$INSTALL_ROOT/bin/lightningcss-compact$EXE_SUFFIX" build --project "$PACKAGED_DIR/examples/project.json" --out-dir "$INSTALL_ROOT/example-output"
+          cargo +${{ matrix.toolchain }} run --manifest-path "$PACKAGED_DIR/Cargo.toml" --locked --example bundle
+
+  evaluation:
+    name: Independent oracle and Chrome equivalence
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.88.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: cargo build --locked --features cli
+      - run: cargo build --locked --example stock-control
+      - run: node --test evaluation/*.test.mjs
+      - run: node scripts/check-oracle.mjs --bin=target/debug/lightningcss-compact --output=target/oracle-evidence
+      - name: Native CSS equivalence and evaluator mutants
+        run: |
+          CHROME_BIN="$(command -v google-chrome || command -v chromium)"
+          export CHROME_BIN
+          node scripts/evaluate.mjs --bin=target/debug/lightningcss-compact --stock-bin=target/debug/examples/stock-control --output=target/chrome-evidence --timing-pairs=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: independent-evaluation-evidence
+          path: |
+            target/oracle-evidence
+            target/chrome-evidence
+          retention-days: 90
