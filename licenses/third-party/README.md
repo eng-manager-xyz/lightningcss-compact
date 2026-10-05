@@ -15,6 +15,13 @@ recorded in `inventory.json`, along with exact supplemental notice URLs,
 VCS revisions, selections, and SHA-256 hashes. Regenerate when Cargo.lock
 or CLI features change, and include this tree in native binary archives.
 
+For dependencies whose exact upstream sources omit notice files, recorded
+supplements preserve the original Cargo license/authors declarations and
+include canonical MIT permission and disclaimer terms. The canonical text
+is pinned by SPDX repository commit and SHA-256, with a byte-checked excerpt
+that excludes its replaceable copyright template. No upstream copyright
+notice was supplied for these dependencies; no holder or year is invented.
+
 | Dependency | Version | Upstream declaration | Included notices | Source |
 | --- | --- | --- | --- | --- |
 | adler2 | 2.0.1 | 0BSD OR MIT OR Apache-2.0 | [LICENSE-0BSD](adler2-2.0.1/LICENSE-0BSD), [LICENSE-APACHE](adler2-2.0.1/LICENSE-APACHE), [LICENSE-MIT](adler2-2.0.1/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/adler2/2.0.1/download) |
@@ -94,7 +101,7 @@ or CLI features change, and include this tree in native binary archives.
 | once_cell_polyfill | 1.70.2 | MIT OR Apache-2.0 | [LICENSE-APACHE](once_cell_polyfill-1.70.2/LICENSE-APACHE), [LICENSE-MIT](once_cell_polyfill-1.70.2/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/once_cell_polyfill/1.70.2/download) |
 | outref | 0.1.0 | MIT | [LICENSE](outref-0.1.0/LICENSE) | [exact source package](https://crates.io/api/v1/crates/outref/0.1.0/download) |
 | parcel_selectors | 0.28.3 | MPL-2.0 | [LICENSE](parcel_selectors-0.28.3/LICENSE) | [exact source package](https://crates.io/api/v1/crates/parcel_selectors/0.28.3/download) |
-| parcel_sourcemap | 2.1.1 | MIT | [CARGO-LICENSE-DECLARATION.toml](parcel_sourcemap-2.1.1/CARGO-LICENSE-DECLARATION.toml) (recorded supplement) | [exact source package](https://crates.io/api/v1/crates/parcel_sourcemap/2.1.1/download) |
+| parcel_sourcemap | 2.1.1 | MIT | [CARGO-LICENSE-DECLARATION.toml](parcel_sourcemap-2.1.1/CARGO-LICENSE-DECLARATION.toml), [LICENSE-MIT-TERMS.txt](parcel_sourcemap-2.1.1/LICENSE-MIT-TERMS.txt) (recorded supplement) | [exact source package](https://crates.io/api/v1/crates/parcel_sourcemap/2.1.1/download) |
 | pastey | 0.1.1 | MIT OR Apache-2.0 | [LICENSE-APACHE](pastey-0.1.1/LICENSE-APACHE), [LICENSE-MIT](pastey-0.1.1/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/pastey/0.1.1/download) |
 | pathdiff | 0.2.3 | MIT/Apache-2.0 | [LICENSE-APACHE](pathdiff-0.2.3/LICENSE-APACHE), [LICENSE-MIT](pathdiff-0.2.3/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/pathdiff/0.2.3/download) |
 | phf | 0.11.3 | MIT | [LICENSE](phf-0.11.3/LICENSE) | [exact source package](https://crates.io/api/v1/crates/phf/0.11.3/download) |
@@ -122,7 +129,7 @@ or CLI features change, and include this tree in native binary archives.
 | rustversion | 1.0.23 | MIT OR Apache-2.0 | [LICENSE-APACHE](rustversion-1.0.23/LICENSE-APACHE), [LICENSE-MIT](rustversion-1.0.23/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/rustversion/1.0.23/download) |
 | same-file | 1.0.6 | Unlicense/MIT | [COPYING](same-file-1.0.6/COPYING), [LICENSE-MIT](same-file-1.0.6/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/same-file/1.0.6/download) |
 | scopeguard | 1.2.0 | MIT OR Apache-2.0 | [LICENSE-APACHE](scopeguard-1.2.0/LICENSE-APACHE), [LICENSE-MIT](scopeguard-1.2.0/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/scopeguard/1.2.0/download) |
-| seahash | 4.1.0 | MIT | [CARGO-LICENSE-DECLARATION.toml](seahash-4.1.0/CARGO-LICENSE-DECLARATION.toml) (recorded supplement) | [exact source package](https://crates.io/api/v1/crates/seahash/4.1.0/download) |
+| seahash | 4.1.0 | MIT | [CARGO-LICENSE-DECLARATION.toml](seahash-4.1.0/CARGO-LICENSE-DECLARATION.toml), [LICENSE-MIT-TERMS.txt](seahash-4.1.0/LICENSE-MIT-TERMS.txt) (recorded supplement) | [exact source package](https://crates.io/api/v1/crates/seahash/4.1.0/download) |
 | selectors | 0.37.0 | MPL-2.0 | [SOURCE-NOTICE.txt](selectors-0.37.0/SOURCE-NOTICE.txt), [LICENSE-MPL-2.0](selectors-0.37.0/LICENSE-MPL-2.0) (recorded supplement) | [exact source package](https://crates.io/api/v1/crates/selectors/0.37.0/download) |
 | semver | 1.0.28 | MIT OR Apache-2.0 | [LICENSE-APACHE](semver-1.0.28/LICENSE-APACHE), [LICENSE-MIT](semver-1.0.28/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/semver/1.0.28/download) |
 | serde | 1.0.229 | MIT OR Apache-2.0 | [LICENSE-APACHE](serde-1.0.229/LICENSE-APACHE), [LICENSE-MIT](serde-1.0.229/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/serde/1.0.229/download) |
@@ -164,5 +171,6 @@ or CLI features change, and include this tree in native binary archives.
 | zmij | 1.0.23 | MIT | [LICENSE-MIT](zmij-1.0.23/LICENSE-MIT) | [exact source package](https://crates.io/api/v1/crates/zmij/1.0.23/download) |
 
 ## Missing upstream notice files
-- `parcel_sourcemap 2.1.1`: MIT; full license/copyright notice text was unavailable in the Cargo package and recorded exact upstream repository revision. The original Cargo license/authors declaration is preserved separately. Inspect the source and upstream repository before distributing it; an SPDX declaration is not a replacement for missing notice text.
-- `seahash 4.1.0`: MIT; full license/copyright notice text was unavailable in the Cargo package and recorded exact upstream repository revision. The original Cargo license/authors declaration is preserved separately. Inspect the source and upstream repository before distributing it; an SPDX declaration is not a replacement for missing notice text.
+
+- `parcel_sourcemap 2.1.1`: MIT; no upstream copyright notice was supplied in the Cargo package or recorded exact upstream repository revision. The original Cargo license/authors declaration and canonical MIT permission/disclaimer terms are included separately. No copyright holder or year is invented.
+- `seahash 4.1.0`: MIT; no upstream copyright notice was supplied in the Cargo package or recorded exact upstream repository revision. The original Cargo license/authors declaration and canonical MIT permission/disclaimer terms are included separately. No copyright holder or year is invented.

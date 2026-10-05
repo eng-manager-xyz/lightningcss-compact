@@ -23,13 +23,15 @@ TARGETS = (
 PREFIXES = ("license", "licence", "copying", "copyright", "notice")
 
 
-def dependencies():
+def dependencies(offline=False):
     packages = {}
     for target in TARGETS:
         command = [
             "cargo", "metadata", "--locked", "--format-version", "1",
             "--features", "cli", "--filter-platform", target,
         ]
+        if offline:
+            command.append("--offline")
         metadata = json.loads(subprocess.check_output(command, cwd=ROOT))
         all_packages = {package["id"]: package for package in metadata["packages"]}
         nodes = {node["id"]: node for node in metadata["resolve"]["nodes"]}
@@ -80,8 +82,8 @@ def notice_files(package):
     return directory, sorted(found)
 
 
-def rendered_files():
-    packages = dependencies()
+def rendered_files(offline=False):
+    packages = dependencies(offline)
     overrides = json.loads((ROOT / "licenses/upstream/overrides.json").read_text())
     expected = {}
     missing = []
@@ -116,6 +118,18 @@ def rendered_files():
                 content = source_file.read_bytes()
                 if hashlib.sha256(content).hexdigest() != notice["sha256"]:
                     raise ValueError("Supplemental notice bytes changed: " + notice["path"])
+                if notice.get("source_path"):
+                    canonical = (ROOT / notice["source_path"]).resolve()
+                    if not canonical.is_relative_to((ROOT / "licenses/upstream").resolve()):
+                        raise ValueError("Canonical notice escaped its source directory")
+                    original = canonical.read_bytes()
+                    if hashlib.sha256(original).hexdigest() != notice["source_sha256"]:
+                        raise ValueError("Canonical notice source bytes changed: " + notice["source_path"])
+                    header = b"MIT License\n\nCopyright (c) <year> <copyright holders>\n\n"
+                    if notice["selection"] != "permission-and-disclaimer" or not original.startswith(header):
+                        raise ValueError("Unsupported canonical notice selection")
+                    if content != original[len(header):]:
+                        raise ValueError("Canonical MIT permission/disclaimer selection changed")
                 relative = pathlib.PurePosixPath(folder, notice["name"])
                 expected[relative.as_posix()] = content
                 links.append("[" + notice["name"] + "](" +
@@ -126,6 +140,10 @@ def rendered_files():
                 "name": name, "version": version,
                 "declared_license": package.get("license"),
                 "repository": package.get("repository"),
+                "canonical_terms_supplied": bool(override and override.get("canonical_terms_supplied")),
+                "upstream_copyright_notice_unavailable": bool(
+                    override and override.get("upstream_copyright_notice_unavailable")
+                ),
             })
         source = "https://crates.io/api/v1/crates/" + name + "/" + version + "/download"
         source_label = "[exact source package](" + source + ")"
@@ -152,19 +170,30 @@ def rendered_files():
         "recorded in `inventory.json`, along with exact supplemental notice URLs,",
         "VCS revisions, selections, and SHA-256 hashes. Regenerate when Cargo.lock",
         "or CLI features change, and include this tree in native binary archives.", "",
+        "For dependencies whose exact upstream sources omit notice files, recorded",
+        "supplements preserve the original Cargo license/authors declarations and",
+        "include canonical MIT permission and disclaimer terms. The canonical text",
+        "is pinned by SPDX repository commit and SHA-256, with a byte-checked excerpt",
+        "that excludes its replaceable copyright template. No upstream copyright",
+        "notice was supplied for these dependencies; no holder or year is invented.", "",
         "| Dependency | Version | Upstream declaration | Included notices | Source |",
         "| --- | --- | --- | --- | --- |",
-        *rows, "", "## Missing upstream notice files", "",
+        *rows, "", "## Missing upstream notice files", "", "",
     ])
     if missing:
         readme += "\n".join(
             "- `" + package["name"] + " " + package["version"] + "`: " +
             (package["declared_license"] or "license unspecified") +
-            "; full license/copyright notice text was unavailable in the Cargo "
-            "package and recorded exact upstream repository revision. The original "
-            "Cargo license/authors declaration is preserved separately. Inspect "
-            "the source and upstream repository before distributing it; an SPDX "
-            "declaration is not a replacement for missing notice text."
+            ("; no upstream copyright notice was supplied in the Cargo package or "
+             "recorded exact upstream repository revision. The original Cargo "
+             "license/authors declaration and canonical MIT permission/disclaimer "
+             "terms are included separately. No copyright holder or year is invented."
+             if package["canonical_terms_supplied"] else
+             "; full license/copyright notice text was unavailable in the Cargo "
+             "package and recorded exact upstream repository revision. The original "
+             "Cargo license/authors declaration is preserved separately. Inspect "
+             "the source and upstream repository before distributing it; an SPDX "
+             "declaration is not a replacement for missing notice text.")
             for package in missing
         ) + "\n"
     else:
@@ -192,8 +221,9 @@ def rendered_files():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="verify generated notices without rewriting them")
+    parser.add_argument("--offline", action="store_true", help="resolve locked metadata only from the local Cargo cache")
     args = parser.parse_args()
-    expected, missing, package_count = rendered_files()
+    expected, missing, package_count = rendered_files(args.offline)
     if args.check:
         actual = {
             file.relative_to(DESTINATION).as_posix(): file.read_bytes()

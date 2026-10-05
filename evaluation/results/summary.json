@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "date": "2026-10-04",
+  "date": "2026-10-05",
   "status": "passed",
   "compiler": {
-    "sha256": "e64266db741b28eb6d71b6fca7041be2e5abae0b647dad9e0ae225b448d1227f"
+    "sha256": "3a19092eab25d7b7cef8169ec249ae0a47efafb79e24af3b0b2864b79b09656b"
   },
   "stockCompiler": {
-    "sha256": "e6bb0479cb1e10d448abe51f351687e20f5238a64c41f05e1e105b9f6cc51509"
+    "sha256": "dcdb4a60ff38720d33bcceb670db61aa22fa671e1e09a12b49813e5ecc255007"
   },
   "hardware": {
     "platform": "darwin",
@@ -2278,6 +2278,200 @@
       "stockDeviations": []
     },
     {
+      "id": "uppercase-class-attribute-observer",
+      "states": 2,
+      "sizes": {
+        "stockControl": {
+          "raw": 2309,
+          "brotli": 329,
+          "gzip": 439
+        },
+        "baseline": {
+          "raw": 2332,
+          "brotli": 327,
+          "gzip": 439
+        },
+        "naming": {
+          "raw": 2332,
+          "brotli": 327,
+          "gzip": 439
+        },
+        "compact": {
+          "raw": 2332,
+          "brotli": 327,
+          "gzip": 439
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 173,
+            "brotli": 101,
+            "gzip": 134
+          },
+          "html": {
+            "raw": 2065,
+            "brotli": 173,
+            "gzip": 239
+          },
+          "affectedJavaScript": {
+            "raw": 71,
+            "brotli": 55,
+            "gzip": 66
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 196,
+            "brotli": 99,
+            "gzip": 134
+          },
+          "html": {
+            "raw": 2065,
+            "brotli": 173,
+            "gzip": 239
+          },
+          "affectedJavaScript": {
+            "raw": 71,
+            "brotli": 55,
+            "gzip": 66
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 196,
+            "brotli": 99,
+            "gzip": 134
+          },
+          "html": {
+            "raw": 2065,
+            "brotli": 173,
+            "gzip": 239
+          },
+          "affectedJavaScript": {
+            "raw": 71,
+            "brotli": 55,
+            "gzip": 66
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 196,
+            "brotli": 99,
+            "gzip": 134
+          },
+          "html": {
+            "raw": 2065,
+            "brotli": 173,
+            "gzip": 239
+          },
+          "affectedJavaScript": {
+            "raw": 71,
+            "brotli": 55,
+            "gzip": 66
+          }
+        }
+      },
+      "stockDeviations": []
+    },
+    {
+      "id": "immutable-nth-class-attribute-observer",
+      "states": 2,
+      "sizes": {
+        "stockControl": {
+          "raw": 2228,
+          "brotli": 453,
+          "gzip": 559
+        },
+        "baseline": {
+          "raw": 2234,
+          "brotli": 443,
+          "gzip": 543
+        },
+        "naming": {
+          "raw": 2234,
+          "brotli": 443,
+          "gzip": 543
+        },
+        "compact": {
+          "raw": 2234,
+          "brotli": 443,
+          "gzip": 543
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 304,
+            "brotli": 163,
+            "gzip": 200
+          },
+          "html": {
+            "raw": 1787,
+            "brotli": 205,
+            "gzip": 260
+          },
+          "affectedJavaScript": {
+            "raw": 137,
+            "brotli": 85,
+            "gzip": 99
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 327,
+            "brotli": 162,
+            "gzip": 198
+          },
+          "html": {
+            "raw": 1787,
+            "brotli": 205,
+            "gzip": 260
+          },
+          "affectedJavaScript": {
+            "raw": 120,
+            "brotli": 76,
+            "gzip": 85
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 327,
+            "brotli": 162,
+            "gzip": 198
+          },
+          "html": {
+            "raw": 1787,
+            "brotli": 205,
+            "gzip": 260
+          },
+          "affectedJavaScript": {
+            "raw": 120,
+            "brotli": 76,
+            "gzip": 85
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 327,
+            "brotli": 162,
+            "gzip": 198
+          },
+          "html": {
+            "raw": 1787,
+            "brotli": 205,
+            "gzip": 260
+          },
+          "affectedJavaScript": {
+            "raw": 120,
+            "brotli": 76,
+            "gzip": 85
+          }
+        }
+      },
+      "stockDeviations": []
+    },
+    {
       "id": "empty-attribute-values",
       "states": 2,
       "sizes": {
@@ -2369,6 +2563,297 @@
             "raw": 44,
             "brotli": 35,
             "gzip": 44
+          }
+        }
+      },
+      "stockDeviations": []
+    },
+    {
+      "id": "generated-class-content-direct",
+      "states": 2,
+      "sizes": {
+        "stockControl": {
+          "raw": 2220,
+          "brotli": 286,
+          "gzip": 375
+        },
+        "baseline": {
+          "raw": 2243,
+          "brotli": 286,
+          "gzip": 377
+        },
+        "naming": {
+          "raw": 2243,
+          "brotli": 286,
+          "gzip": 377
+        },
+        "compact": {
+          "raw": 2220,
+          "brotli": 286,
+          "gzip": 375
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 131,
+            "brotli": 96,
+            "gzip": 128
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 154,
+            "brotli": 96,
+            "gzip": 130
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 154,
+            "brotli": 96,
+            "gzip": 130
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 131,
+            "brotli": 96,
+            "gzip": 128
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
+      "stockDeviations": []
+    },
+    {
+      "id": "generated-class-content-custom-property",
+      "states": 2,
+      "sizes": {
+        "stockControl": {
+          "raw": 2253,
+          "brotli": 304,
+          "gzip": 395
+        },
+        "baseline": {
+          "raw": 2276,
+          "brotli": 304,
+          "gzip": 397
+        },
+        "naming": {
+          "raw": 2276,
+          "brotli": 304,
+          "gzip": 397
+        },
+        "compact": {
+          "raw": 2253,
+          "brotli": 304,
+          "gzip": 395
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 164,
+            "brotli": 114,
+            "gzip": 148
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 187,
+            "brotli": 114,
+            "gzip": 150
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 187,
+            "brotli": 114,
+            "gzip": 150
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 164,
+            "brotli": 114,
+            "gzip": 148
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        }
+      },
+      "stockDeviations": []
+    },
+    {
+      "id": "generated-class-content-escaped",
+      "states": 2,
+      "sizes": {
+        "stockControl": {
+          "raw": 2220,
+          "brotli": 286,
+          "gzip": 375
+        },
+        "baseline": {
+          "raw": 2243,
+          "brotli": 286,
+          "gzip": 377
+        },
+        "naming": {
+          "raw": 2243,
+          "brotli": 286,
+          "gzip": 377
+        },
+        "compact": {
+          "raw": 2220,
+          "brotli": 286,
+          "gzip": 375
+        }
+      },
+      "streamSizes": {
+        "stockControl": {
+          "css": {
+            "raw": 131,
+            "brotli": 96,
+            "gzip": 128
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "baseline": {
+          "css": {
+            "raw": 154,
+            "brotli": 96,
+            "gzip": 130
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "naming": {
+          "css": {
+            "raw": 154,
+            "brotli": 96,
+            "gzip": 130
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
+          }
+        },
+        "compact": {
+          "css": {
+            "raw": 131,
+            "brotli": 96,
+            "gzip": 128
+          },
+          "html": {
+            "raw": 2089,
+            "brotli": 190,
+            "gzip": 247
+          },
+          "affectedJavaScript": {
+            "raw": 0,
+            "brotli": 0,
+            "gzip": 0
           }
         }
       },
@@ -3056,93 +3541,93 @@
   ],
   "totals": {
     "stockControl": {
-      "raw": 42199,
-      "brotli": 5240,
-      "gzip": 7371
+      "raw": 53429,
+      "brotli": 6898,
+      "gzip": 9514
     },
     "baseline": {
-      "raw": 42639,
-      "brotli": 5253,
-      "gzip": 7392
+      "raw": 53967,
+      "brotli": 6899,
+      "gzip": 9525
     },
     "naming": {
-      "raw": 40206,
-      "brotli": 5100,
-      "gzip": 7182
+      "raw": 51534,
+      "brotli": 6746,
+      "gzip": 9315
     },
     "compact": {
-      "raw": 39796,
-      "brotli": 5009,
-      "gzip": 7092
+      "raw": 51055,
+      "brotli": 6655,
+      "gzip": 9219
     }
   },
   "streamTotals": {
     "stockControl": {
       "css": {
-        "raw": 2809,
-        "brotli": 1897,
-        "gzip": 2636
+        "raw": 3712,
+        "brotli": 2467,
+        "gzip": 3374
       },
       "html": {
-        "raw": 39191,
-        "brotli": 3157,
-        "gzip": 4501
+        "raw": 49310,
+        "brotli": 4105,
+        "gzip": 5741
       },
       "affectedJavaScript": {
-        "raw": 199,
-        "brotli": 186,
-        "gzip": 234
+        "raw": 407,
+        "brotli": 326,
+        "gzip": 399
       }
     },
     "baseline": {
       "css": {
-        "raw": 3266,
-        "brotli": 1917,
-        "gzip": 2666
+        "raw": 4284,
+        "brotli": 2484,
+        "gzip": 3408
       },
       "html": {
-        "raw": 39191,
-        "brotli": 3157,
-        "gzip": 4501
+        "raw": 49310,
+        "brotli": 4105,
+        "gzip": 5741
       },
       "affectedJavaScript": {
-        "raw": 182,
-        "brotli": 179,
-        "gzip": 225
+        "raw": 373,
+        "brotli": 310,
+        "gzip": 376
       }
     },
     "naming": {
       "css": {
-        "raw": 2957,
-        "brotli": 1830,
-        "gzip": 2480
+        "raw": 3975,
+        "brotli": 2397,
+        "gzip": 3222
       },
       "html": {
-        "raw": 37100,
-        "brotli": 3124,
-        "gzip": 4507
+        "raw": 47219,
+        "brotli": 4072,
+        "gzip": 5747
       },
       "affectedJavaScript": {
-        "raw": 149,
-        "brotli": 146,
-        "gzip": 195
+        "raw": 340,
+        "brotli": 277,
+        "gzip": 346
       }
     },
     "compact": {
       "css": {
-        "raw": 2546,
-        "brotli": 1760,
-        "gzip": 2416
+        "raw": 3495,
+        "brotli": 2327,
+        "gzip": 3152
       },
       "html": {
-        "raw": 37101,
-        "brotli": 3103,
-        "gzip": 4481
+        "raw": 47220,
+        "brotli": 4051,
+        "gzip": 5721
       },
       "affectedJavaScript": {
-        "raw": 149,
-        "brotli": 146,
-        "gzip": 195
+        "raw": 340,
+        "brotli": 277,
+        "gzip": 346
       }
     }
   },
@@ -3154,26 +3639,26 @@
   "stockDeviationCount": 0,
   "reductions": {
     "baseline": {
-      "raw": 6.66760477497127,
-      "brotli": 4.644964782029315,
-      "gzip": 4.058441558441562
+      "raw": 5.395890080975407,
+      "brotli": 3.5367444557182215,
+      "gzip": 3.2125984251968553
     },
     "stockControl": {
-      "raw": 5.694447735728336,
-      "brotli": 4.408396946564885,
-      "gzip": 3.7851037851037828
+      "raw": 4.4432798667390365,
+      "brotli": 3.5227602203537267,
+      "gzip": 3.1006937145259594
     }
   },
-  "stateCount": 89,
-  "mutantCount": 89,
+  "stateCount": 99,
+  "mutantCount": 99,
   "exceptions": 0,
   "remoteRequests": 0,
   "oracle": {
     "status": "passed",
     "compiler": {
-      "sha256": "e64266db741b28eb6d71b6fca7041be2e5abae0b647dad9e0ae225b448d1227f",
-      "sourcePath": "/tmp/lightningcss-compact-shipping-e642-functional/compiler.snapshot",
-      "executable": "/tmp/lightningcss-compact-shipping-e642-oracle/compiler.snapshot"
+      "sha256": "3a19092eab25d7b7cef8169ec249ae0a47efafb79e24af3b0b2864b79b09656b",
+      "sourcePath": "/tmp/lightningcss-compact-shipping-3a19092-functional/compiler.snapshot",
+      "executable": "/tmp/lightningcss-compact-shipping-3a19092-oracle/compiler.snapshot"
     },
     "cases": [
       {
@@ -3452,105 +3937,105 @@
       "recalcStyleMs": {
         "baseline": {
           "count": 8,
-          "min": 1.647,
-          "p10": 1.647,
-          "median": 2.2359999999999998,
-          "p90": 2.5869999999999997,
-          "max": 2.5869999999999997
+          "min": 2.016,
+          "p10": 2.016,
+          "median": 2.4215,
+          "p90": 2.8579999999999997,
+          "max": 2.8579999999999997
         },
         "compact": {
           "count": 8,
-          "min": 1.817,
-          "p10": 1.817,
-          "median": 2.26,
-          "p90": 3.0820000000000003,
-          "max": 3.0820000000000003
+          "min": 1.8719999999999999,
+          "p10": 1.8719999999999999,
+          "median": 2.1235,
+          "p90": 2.314,
+          "max": 2.314
         },
         "pairedDelta": {
           "count": 8,
-          "min": -0.4540000000000002,
-          "p10": -0.4540000000000002,
-          "median": -0.0824999999999998,
-          "p90": 1.1910000000000003,
-          "max": 1.1910000000000003
+          "min": -0.7030000000000003,
+          "p10": -0.7030000000000003,
+          "median": -0.24599999999999977,
+          "p90": 0,
+          "max": 0
         }
       },
       "layoutMs": {
         "baseline": {
           "count": 8,
-          "min": 2.039,
-          "p10": 2.039,
-          "median": 2.439,
-          "p90": 2.539,
-          "max": 2.539
+          "min": 1.637,
+          "p10": 1.637,
+          "median": 2.0815,
+          "p90": 2.499,
+          "max": 2.499
         },
         "compact": {
           "count": 8,
-          "min": 1.392,
-          "p10": 1.392,
-          "median": 2.0540000000000003,
-          "p90": 2.757,
-          "max": 2.757
+          "min": 1.632,
+          "p10": 1.632,
+          "median": 2.211,
+          "p90": 2.781,
+          "max": 2.781
         },
         "pairedDelta": {
           "count": 8,
-          "min": -1.1090000000000004,
-          "p10": -1.1090000000000004,
-          "median": -0.1555000000000002,
-          "p90": 0.22600000000000042,
-          "max": 0.22600000000000042
+          "min": -0.5360000000000003,
+          "p10": -0.5360000000000003,
+          "median": 0.0930000000000002,
+          "p90": 1.1440000000000001,
+          "max": 1.1440000000000001
         }
       },
       "taskMs": {
         "baseline": {
           "count": 8,
-          "min": 22.512,
-          "p10": 22.512,
-          "median": 25.771,
-          "p90": 31.435,
-          "max": 31.435
+          "min": 22.769000000000002,
+          "p10": 22.769000000000002,
+          "median": 25.918,
+          "p90": 30.115,
+          "max": 30.115
         },
         "compact": {
           "count": 8,
-          "min": 22.83,
-          "p10": 22.83,
-          "median": 25.436999999999998,
-          "p90": 28.965,
-          "max": 28.965
+          "min": 20.513,
+          "p10": 20.513,
+          "median": 25.9575,
+          "p90": 29.339000000000002,
+          "max": 29.339000000000002
         },
         "pairedDelta": {
           "count": 8,
-          "min": -8.578,
-          "p10": -8.578,
-          "median": 0.07949999999999946,
-          "p90": 3.5749999999999993,
-          "max": 3.5749999999999993
+          "min": -9.601999999999997,
+          "p10": -9.601999999999997,
+          "median": 0.07750000000000234,
+          "p90": 2.482999999999997,
+          "max": 2.482999999999997
         }
       },
       "paintMs": {
         "baseline": {
           "count": 8,
-          "min": 0.092,
-          "p10": 0.092,
-          "median": 0.63,
-          "p90": 0.758,
-          "max": 0.758
+          "min": 0.1,
+          "p10": 0.1,
+          "median": 0.5715,
+          "p90": 1.161,
+          "max": 1.161
         },
         "compact": {
           "count": 8,
-          "min": 0.091,
-          "p10": 0.091,
-          "median": 0.541,
-          "p90": 1.06,
-          "max": 1.06
+          "min": 0.09,
+          "p10": 0.09,
+          "median": 0.5385,
+          "p90": 0.877,
+          "max": 0.877
         },
         "pairedDelta": {
           "count": 8,
-          "min": -0.5830000000000001,
-          "p10": -0.5830000000000001,
-          "median": -0.02999999999999997,
-          "p90": 0.8180000000000001,
-          "max": 0.8180000000000001
+          "min": -0.8370000000000001,
+          "p10": -0.8370000000000001,
+          "median": -0.16949999999999998,
+          "p90": 0.5920000000000001,
+          "max": 0.5920000000000001
         }
       }
     },
@@ -3562,88 +4047,88 @@
           "compact"
         ],
         "baseline": {
-          "recalcStyleMs": 2.458,
-          "layoutMs": 2.524,
-          "taskMs": 31.435,
-          "paintMs": 0.099,
+          "recalcStyleMs": 2.432,
+          "layoutMs": 2.052,
+          "taskMs": 30.115,
+          "paintMs": 0.21,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371665382447,
-              "endMicroseconds": 371665586096
+              "startMicroseconds": 375064697430,
+              "endMicroseconds": 375064901104
             },
             "count": 2,
-            "unionMs": 0.099,
-            "inclusiveMs": 0.099,
-            "maxSliceMs": 0.063,
+            "unionMs": 0.21,
+            "inclusiveMs": 0.21,
+            "maxSliceMs": 0.145,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371665405281,
-                "dur": 63
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375064718078,
+                "dur": 65
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371665434884,
-                "dur": 36
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375064739379,
+                "dur": 145
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-0-baseline.trace.json.gz",
-            "sha256": "d6ed4717bf69d9f124c42de6e8a9d72697c23ff92209911fdc5887a42653087c",
-            "rawBytes": 114848,
-            "gzipBytes": 21681
+            "sha256": "c075d149cd08011637415c4c87519efd4b03bebee53b38c9feb789c86a01f7ad",
+            "rawBytes": 116918,
+            "gzipBytes": 21750
           }
         },
         "compact": {
-          "recalcStyleMs": 2.249,
-          "layoutMs": 2.468,
-          "taskMs": 22.857,
-          "paintMs": 0.098,
+          "recalcStyleMs": 2.092,
+          "layoutMs": 2.538,
+          "taskMs": 20.513,
+          "paintMs": 0.802,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371665606632,
-              "endMicroseconds": 371665802546
+              "startMicroseconds": 375064923134,
+              "endMicroseconds": 375065100266
             },
             "count": 2,
-            "unionMs": 0.098,
-            "inclusiveMs": 0.098,
-            "maxSliceMs": 0.065,
+            "unionMs": 0.802,
+            "inclusiveMs": 0.802,
+            "maxSliceMs": 0.765,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371665622899,
-                "dur": 65
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375064939760,
+                "dur": 765
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371665651890,
-                "dur": 33
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375064948474,
+                "dur": 37
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-0-compact.trace.json.gz",
-            "sha256": "0bc85bdd728a2dd0d3f8492f35c21770d7176ec17158b4736c63d337617e3c7b",
-            "rawBytes": 114762,
-            "gzipBytes": 21588
+            "sha256": "8696850ce4d385d07c39227047256611c79dec0eac1cf6c2956c629f56ec4fc7",
+            "rawBytes": 112614,
+            "gzipBytes": 21464
           }
         },
         "deltaMs": {
-          "recalcStyleMs": -0.20900000000000007,
-          "layoutMs": -0.05600000000000005,
-          "taskMs": -8.578,
-          "paintMs": -0.0010000000000000009
+          "recalcStyleMs": -0.33999999999999986,
+          "layoutMs": 0.48599999999999977,
+          "taskMs": -9.601999999999997,
+          "paintMs": 0.5920000000000001
         }
       },
       {
@@ -3653,88 +4138,88 @@
           "baseline"
         ],
         "baseline": {
-          "recalcStyleMs": 1.957,
-          "layoutMs": 2.278,
-          "taskMs": 22.512,
-          "paintMs": 0.718,
+          "recalcStyleMs": 2.4659999999999997,
+          "layoutMs": 1.878,
+          "taskMs": 22.769000000000002,
+          "paintMs": 0.927,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371666051634,
-              "endMicroseconds": 371666253733
+              "startMicroseconds": 375065332620,
+              "endMicroseconds": 375065516352
             },
             "count": 2,
-            "unionMs": 0.718,
-            "inclusiveMs": 0.718,
-            "maxSliceMs": 0.685,
+            "unionMs": 0.927,
+            "inclusiveMs": 0.927,
+            "maxSliceMs": 0.889,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371666065871,
-                "dur": 685
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065349559,
+                "dur": 889
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371666101462,
-                "dur": 33
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065365692,
+                "dur": 38
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-1-baseline.trace.json.gz",
-            "sha256": "7558037169e51e6de225ae54c18e555adc87c036d271c154efd4d83e3651cb42",
-            "rawBytes": 114355,
-            "gzipBytes": 21525
+            "sha256": "c8ed963bbdfc39ff02bd2ac07ca9678962055888969f0d5a6799d21a33193ade",
+            "rawBytes": 112266,
+            "gzipBytes": 21486
           }
         },
         "compact": {
-          "recalcStyleMs": 1.817,
-          "layoutMs": 2.2720000000000002,
-          "taskMs": 22.83,
-          "paintMs": 0.819,
+          "recalcStyleMs": 2.314,
+          "layoutMs": 1.6540000000000001,
+          "taskMs": 22.025,
+          "paintMs": 0.09,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371665819320,
-              "endMicroseconds": 371666020316
+              "startMicroseconds": 375065114844,
+              "endMicroseconds": 375065317121
             },
             "count": 2,
-            "unionMs": 0.819,
-            "inclusiveMs": 0.819,
-            "maxSliceMs": 0.785,
+            "unionMs": 0.09,
+            "inclusiveMs": 0.09,
+            "maxSliceMs": 0.062,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371665837120,
-                "dur": 785
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065130848,
+                "dur": 62
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371665868552,
-                "dur": 34
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065152618,
+                "dur": 28
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-1-compact.trace.json.gz",
-            "sha256": "e7075666c30ddbfc2204a377e3e8f5faa1447cf0d3056d7862d1eaf96a360b24",
-            "rawBytes": 114823,
-            "gzipBytes": 21599
+            "sha256": "e8f22547b32691c07cd5d9cbdd107ace159238baf0d544a20acaced7f3cc2583",
+            "rawBytes": 116814,
+            "gzipBytes": 21610
           }
         },
         "deltaMs": {
-          "recalcStyleMs": -0.14000000000000012,
-          "layoutMs": -0.005999999999999783,
-          "taskMs": 0.31799999999999784,
-          "paintMs": 0.10099999999999998
+          "recalcStyleMs": -0.1519999999999997,
+          "layoutMs": -0.22399999999999975,
+          "taskMs": -0.7440000000000033,
+          "paintMs": -0.8370000000000001
         }
       },
       {
@@ -3744,88 +4229,88 @@
           "compact"
         ],
         "baseline": {
-          "recalcStyleMs": 1.891,
-          "layoutMs": 2.539,
-          "taskMs": 24.2,
-          "paintMs": 0.242,
+          "recalcStyleMs": 2.016,
+          "layoutMs": 1.637,
+          "taskMs": 23.179000000000002,
+          "paintMs": 0.509,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371666268858,
-              "endMicroseconds": 371666470285
+              "startMicroseconds": 375065531474,
+              "endMicroseconds": 375065733080
             },
             "count": 2,
-            "unionMs": 0.242,
-            "inclusiveMs": 0.242,
-            "maxSliceMs": 0.208,
+            "unionMs": 0.509,
+            "inclusiveMs": 0.509,
+            "maxSliceMs": 0.476,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371666288922,
-                "dur": 208
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065546580,
+                "dur": 476
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371666318028,
-                "dur": 34
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065569996,
+                "dur": 33
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-2-baseline.trace.json.gz",
-            "sha256": "596e48ec04ddcc747dfa8f4b4de5a02d1bfb6a09a23999e7a87d88972ab2458c",
-            "rawBytes": 114804,
-            "gzipBytes": 21627
+            "sha256": "007e566c22beb48fb6ab0faf11c53f0fd97f213165e5b85dca30fa1dbc0e2e48",
+            "rawBytes": 116879,
+            "gzipBytes": 21678
           }
         },
         "compact": {
-          "recalcStyleMs": 3.0820000000000003,
-          "layoutMs": 1.846,
-          "taskMs": 25.233999999999998,
-          "paintMs": 1.06,
+          "recalcStyleMs": 2.016,
+          "layoutMs": 2.781,
+          "taskMs": 25.662,
+          "paintMs": 0.433,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371666502134,
-              "endMicroseconds": 371666703006
+              "startMicroseconds": 375065748399,
+              "endMicroseconds": 375065933880
             },
             "count": 2,
-            "unionMs": 1.06,
-            "inclusiveMs": 1.06,
-            "maxSliceMs": 0.662,
+            "unionMs": 0.433,
+            "inclusiveMs": 0.433,
+            "maxSliceMs": 0.371,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371666520166,
-                "dur": 662
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065766196,
+                "dur": 62
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371666552291,
-                "dur": 398
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065782180,
+                "dur": 371
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-2-compact.trace.json.gz",
-            "sha256": "ea5f01be880e54edd72e0fb7f3241723ee8e57da15254bc5a81d5ee906cc096a",
-            "rawBytes": 114391,
-            "gzipBytes": 21582
+            "sha256": "6887619ede77e9a62ae50c3c23e182216694afe63f29e26932e78003bdca62d6",
+            "rawBytes": 112243,
+            "gzipBytes": 21447
           }
         },
         "deltaMs": {
-          "recalcStyleMs": 1.1910000000000003,
-          "layoutMs": -0.6930000000000001,
-          "taskMs": 1.033999999999999,
-          "paintMs": 0.8180000000000001
+          "recalcStyleMs": 0,
+          "layoutMs": 1.1440000000000001,
+          "taskMs": 2.482999999999997,
+          "paintMs": -0.07600000000000001
         }
       },
       {
@@ -3835,17 +4320,56 @@
           "baseline"
         ],
         "baseline": {
-          "recalcStyleMs": 2.5869999999999997,
-          "layoutMs": 2.1350000000000002,
-          "taskMs": 25.39,
+          "recalcStyleMs": 2.212,
+          "layoutMs": 2.176,
+          "taskMs": 24.808,
+          "paintMs": 0.758,
+          "recalcCount": 2,
+          "layoutCount": 2,
+          "paint": {
+            "source": "devtools.timeline Paint/X on CrRendererMain",
+            "interval": {
+              "startMicroseconds": 375066165216,
+              "endMicroseconds": 375066367260
+            },
+            "count": 2,
+            "unionMs": 0.758,
+            "inclusiveMs": 0.758,
+            "maxSliceMs": 0.694,
+            "slices": [
+              {
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375066182998,
+                "dur": 64
+              },
+              {
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375066214678,
+                "dur": 694
+              }
+            ]
+          },
+          "trace": {
+            "file": "timing-many-nodes-pair-3-baseline.trace.json.gz",
+            "sha256": "2036466f2687b7eb3d95d21c59888bc720b297b59fc9971654628a4f140fa199",
+            "rawBytes": 114352,
+            "gzipBytes": 21517
+          }
+        },
+        "compact": {
+          "recalcStyleMs": 1.8719999999999999,
+          "layoutMs": 2.5860000000000003,
+          "taskMs": 27.261,
           "paintMs": 0.092,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371666951466,
-              "endMicroseconds": 371667152437
+              "startMicroseconds": 375065950013,
+              "endMicroseconds": 375066149961
             },
             "count": 2,
             "unionMs": 0.092,
@@ -3853,70 +4377,31 @@
             "maxSliceMs": 0.057,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371666968637,
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065966615,
                 "dur": 57
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371667001974,
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375065998174,
                 "dur": 35
               }
             ]
           },
           "trace": {
-            "file": "timing-many-nodes-pair-3-baseline.trace.json.gz",
-            "sha256": "0b4aef04872814edfce4afeb8ed23212614a8b07163e845cebf34f8fa263bb5c",
-            "rawBytes": 114378,
-            "gzipBytes": 21534
-          }
-        },
-        "compact": {
-          "recalcStyleMs": 2.46,
-          "layoutMs": 1.7750000000000001,
-          "taskMs": 28.965,
-          "paintMs": 0.617,
-          "recalcCount": 2,
-          "layoutCount": 2,
-          "paint": {
-            "source": "devtools.timeline Paint/X on CrRendererMain",
-            "interval": {
-              "startMicroseconds": 371666718672,
-              "endMicroseconds": 371666919239
-            },
-            "count": 2,
-            "unionMs": 0.617,
-            "inclusiveMs": 0.617,
-            "maxSliceMs": 0.364,
-            "slices": [
-              {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371666741565,
-                "dur": 364
-              },
-              {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371666767801,
-                "dur": 253
-              }
-            ]
-          },
-          "trace": {
             "file": "timing-many-nodes-pair-3-compact.trace.json.gz",
-            "sha256": "3ef28f6da0954cda0aff0a09de802a14093d5b741fdff4e024ca404263ad95fc",
-            "rawBytes": 123666,
-            "gzipBytes": 22661
+            "sha256": "26d67994e50192e1c4702d8a212bf69d296ce9d749861eac92cf574136ad068c",
+            "rawBytes": 123839,
+            "gzipBytes": 22698
           }
         },
         "deltaMs": {
-          "recalcStyleMs": -0.12699999999999978,
-          "layoutMs": -0.3600000000000001,
-          "taskMs": 3.5749999999999993,
-          "paintMs": 0.525
+          "recalcStyleMs": -0.3400000000000003,
+          "layoutMs": 0.41000000000000014,
+          "taskMs": 2.4529999999999994,
+          "paintMs": -0.666
         }
       },
       {
@@ -3926,88 +4411,88 @@
           "compact"
         ],
         "baseline": {
-          "recalcStyleMs": 1.647,
-          "layoutMs": 2.5010000000000003,
-          "taskMs": 25.96,
-          "paintMs": 0.586,
+          "recalcStyleMs": 2.19,
+          "layoutMs": 2.111,
+          "taskMs": 27.028,
+          "paintMs": 0.594,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371667167935,
-              "endMicroseconds": 371667370726
+              "startMicroseconds": 375066399149,
+              "endMicroseconds": 375066599798
             },
             "count": 2,
-            "unionMs": 0.586,
-            "inclusiveMs": 0.586,
-            "maxSliceMs": 0.541,
+            "unionMs": 0.594,
+            "inclusiveMs": 0.594,
+            "maxSliceMs": 0.551,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371667184626,
-                "dur": 541
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375066416046,
+                "dur": 551
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371667219153,
-                "dur": 45
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375066448972,
+                "dur": 43
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-4-baseline.trace.json.gz",
-            "sha256": "10120c57c6f2bc4eb247f01977badc546e441eb6767eaef4b72c8ab03585528a",
-            "rawBytes": 114799,
-            "gzipBytes": 21570
+            "sha256": "78de61e9c58a1a519ceb3b9175fa7f0dac83ee779cfb107bcb571a7080bf08c3",
+            "rawBytes": 114807,
+            "gzipBytes": 21602
           }
         },
         "compact": {
-          "recalcStyleMs": 1.869,
-          "layoutMs": 1.392,
-          "taskMs": 25.801000000000002,
-          "paintMs": 0.527,
+          "recalcStyleMs": 2.185,
+          "layoutMs": 1.632,
+          "taskMs": 26.253,
+          "paintMs": 0.331,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371667401348,
-              "endMicroseconds": 371667603418
+              "startMicroseconds": 375066632846,
+              "endMicroseconds": 375066833638
             },
             "count": 2,
-            "unionMs": 0.527,
-            "inclusiveMs": 0.527,
-            "maxSliceMs": 0.329,
+            "unionMs": 0.331,
+            "inclusiveMs": 0.331,
+            "maxSliceMs": 0.291,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371667418502,
-                "dur": 198
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375066650193,
+                "dur": 291
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371667450918,
-                "dur": 329
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375066681408,
+                "dur": 40
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-4-compact.trace.json.gz",
-            "sha256": "27672964efb6f9a6033c956777fc4ea30c5ae813640e3b5a206fa2ecece0ba7b",
-            "rawBytes": 114357,
-            "gzipBytes": 21512
+            "sha256": "488690f529420bcc1d6d9009272c645fcc15e9e16b0402e21f7e6c549200ba13",
+            "rawBytes": 114367,
+            "gzipBytes": 21552
           }
         },
         "deltaMs": {
-          "recalcStyleMs": 0.22199999999999998,
-          "layoutMs": -1.1090000000000004,
-          "taskMs": -0.15899999999999892,
-          "paintMs": -0.05899999999999994
+          "recalcStyleMs": -0.004999999999999893,
+          "layoutMs": -0.4790000000000003,
+          "taskMs": -0.7749999999999986,
+          "paintMs": -0.26299999999999996
         }
       },
       {
@@ -4017,88 +4502,88 @@
           "baseline"
         ],
         "baseline": {
-          "recalcStyleMs": 2.3089999999999997,
-          "layoutMs": 2.039,
-          "taskMs": 27.922,
-          "paintMs": 0.758,
+          "recalcStyleMs": 2.7230000000000003,
+          "layoutMs": 1.899,
+          "taskMs": 23.970000000000002,
+          "paintMs": 1.161,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371667835509,
-              "endMicroseconds": 371668035382
+              "startMicroseconds": 375067065383,
+              "endMicroseconds": 375067267135
             },
             "count": 2,
-            "unionMs": 0.758,
-            "inclusiveMs": 0.758,
-            "maxSliceMs": 0.594,
+            "unionMs": 1.161,
+            "inclusiveMs": 1.161,
+            "maxSliceMs": 0.706,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371667852893,
-                "dur": 594
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067083356,
+                "dur": 455
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371667885571,
-                "dur": 164
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067114278,
+                "dur": 706
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-5-baseline.trace.json.gz",
-            "sha256": "78f035d34f4d53d6301fcdef3c32dcb352d00b1d4ca4c57382ac0ce81cc1f9c4",
-            "rawBytes": 114369,
+            "sha256": "b572c44c8618ea66f5b2be2402faf96f651bc3ff96d1073dc9696c76e324baaf",
+            "rawBytes": 114384,
             "gzipBytes": 21529
           }
         },
         "compact": {
-          "recalcStyleMs": 2.271,
-          "layoutMs": 1.843,
-          "taskMs": 24.882,
-          "paintMs": 0.555,
+          "recalcStyleMs": 2.02,
+          "layoutMs": 2.4589999999999996,
+          "taskMs": 25.497,
+          "paintMs": 0.877,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371667618534,
-              "endMicroseconds": 371667819870
+              "startMicroseconds": 375066849654,
+              "endMicroseconds": 375067050047
             },
             "count": 2,
-            "unionMs": 0.555,
-            "inclusiveMs": 0.555,
-            "maxSliceMs": 0.522,
+            "unionMs": 0.877,
+            "inclusiveMs": 0.877,
+            "maxSliceMs": 0.82,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371667634698,
-                "dur": 522
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375066867266,
+                "dur": 57
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371667659805,
-                "dur": 33
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375066898408,
+                "dur": 820
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-5-compact.trace.json.gz",
-            "sha256": "3ca72515c3c49fb4b36a9af0e63efeb3ebc1df41f0cd653794abaa6b67d4bd57",
-            "rawBytes": 116818,
-            "gzipBytes": 21626
+            "sha256": "f11d16728dc56a7d928cb7553e056b84a1a1b0a2c1956ee9d487b9886c49d5e3",
+            "rawBytes": 114810,
+            "gzipBytes": 21640
           }
         },
         "deltaMs": {
-          "recalcStyleMs": -0.03799999999999981,
-          "layoutMs": -0.19600000000000017,
-          "taskMs": -3.039999999999999,
-          "paintMs": -0.20299999999999996
+          "recalcStyleMs": -0.7030000000000003,
+          "layoutMs": 0.5599999999999996,
+          "taskMs": 1.5269999999999975,
+          "paintMs": -0.28400000000000003
         }
       },
       {
@@ -4108,88 +4593,88 @@
           "compact"
         ],
         "baseline": {
-          "recalcStyleMs": 2.163,
-          "layoutMs": 2.5309999999999997,
-          "taskMs": 25.582,
-          "paintMs": 0.721,
+          "recalcStyleMs": 2.8579999999999997,
+          "layoutMs": 2.354,
+          "taskMs": 27.294,
+          "paintMs": 0.549,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371668052188,
-              "endMicroseconds": 371668253059
+              "startMicroseconds": 375067281540,
+              "endMicroseconds": 375067483386
             },
             "count": 2,
-            "unionMs": 0.721,
-            "inclusiveMs": 0.721,
-            "maxSliceMs": 0.689,
+            "unionMs": 0.549,
+            "inclusiveMs": 0.549,
+            "maxSliceMs": 0.515,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371668069279,
-                "dur": 689
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067298803,
+                "dur": 515
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371668091325,
-                "dur": 32
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067320968,
+                "dur": 34
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-6-baseline.trace.json.gz",
-            "sha256": "95b258462ce14bfeb0ea467a1bf224f7c204674688b639902a958cb39b8a03ea",
-            "rawBytes": 116847,
-            "gzipBytes": 21682
+            "sha256": "a9f225254814f2bdf4c077177ef87c8717be748ceda0077287fb5a9a27d2809e",
+            "rawBytes": 116984,
+            "gzipBytes": 21677
           }
         },
         "compact": {
-          "recalcStyleMs": 2.755,
-          "layoutMs": 2.757,
-          "taskMs": 27.154999999999998,
-          "paintMs": 0.277,
+          "recalcStyleMs": 2.155,
+          "layoutMs": 1.879,
+          "taskMs": 26.644000000000002,
+          "paintMs": 0.644,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371668284735,
-              "endMicroseconds": 371668486525
+              "startMicroseconds": 375067499636,
+              "endMicroseconds": 375067700398
             },
             "count": 2,
-            "unionMs": 0.277,
-            "inclusiveMs": 0.277,
-            "maxSliceMs": 0.219,
+            "unionMs": 0.644,
+            "inclusiveMs": 0.644,
+            "maxSliceMs": 0.6,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371668303553,
-                "dur": 58
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067516580,
+                "dur": 600
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371668334912,
-                "dur": 219
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067547772,
+                "dur": 44
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-6-compact.trace.json.gz",
-            "sha256": "6ebbead830a2a65f8ecf655db37ea6cfa97b476f64279ce6637051c46ff5e64a",
-            "rawBytes": 114406,
-            "gzipBytes": 21566
+            "sha256": "523b37f9d2e3830f803ce204f3912553eb0c24011edc0eeb8165a6bfb431e7e3",
+            "rawBytes": 114356,
+            "gzipBytes": 21535
           }
         },
         "deltaMs": {
-          "recalcStyleMs": 0.5920000000000001,
-          "layoutMs": 0.22600000000000042,
-          "taskMs": 1.5729999999999968,
-          "paintMs": -0.44399999999999995
+          "recalcStyleMs": -0.7029999999999998,
+          "layoutMs": -0.4750000000000001,
+          "taskMs": -0.6499999999999986,
+          "paintMs": 0.09499999999999997
         }
       },
       {
@@ -4199,95 +4684,95 @@
           "baseline"
         ],
         "baseline": {
-          "recalcStyleMs": 2.398,
-          "layoutMs": 2.3770000000000002,
-          "taskMs": 26.221,
-          "paintMs": 0.674,
+          "recalcStyleMs": 2.411,
+          "layoutMs": 2.499,
+          "taskMs": 28.534,
+          "paintMs": 0.1,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371668719516,
-              "endMicroseconds": 371668919289
+              "startMicroseconds": 375067949247,
+              "endMicroseconds": 375068150016
             },
             "count": 2,
-            "unionMs": 0.674,
-            "inclusiveMs": 0.674,
-            "maxSliceMs": 0.638,
+            "unionMs": 0.1,
+            "inclusiveMs": 0.1,
+            "maxSliceMs": 0.056,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371668742875,
-                "dur": 638
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067968621,
+                "dur": 56
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371668768285,
-                "dur": 36
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067998992,
+                "dur": 44
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-7-baseline.trace.json.gz",
-            "sha256": "71411dde401edd2ffe632341c9ac7051d035ebc254e3f9a87d9d0c2ac4dadbb9",
-            "rawBytes": 114349,
-            "gzipBytes": 21541
+            "sha256": "9547d0a093eb366feaa8d2b12091df0a47902ccbd89153b5fe1bcbe3523d2a9d",
+            "rawBytes": 114365,
+            "gzipBytes": 21551
           }
         },
         "compact": {
-          "recalcStyleMs": 1.944,
-          "layoutMs": 2.262,
-          "taskMs": 25.64,
-          "paintMs": 0.091,
+          "recalcStyleMs": 2.305,
+          "layoutMs": 1.9629999999999999,
+          "taskMs": 29.339000000000002,
+          "paintMs": 0.666,
           "recalcCount": 2,
           "layoutCount": 2,
           "paint": {
             "source": "devtools.timeline Paint/X on CrRendererMain",
             "interval": {
-              "startMicroseconds": 371668502450,
-              "endMicroseconds": 371668703440
+              "startMicroseconds": 375067732564,
+              "endMicroseconds": 375067934022
             },
             "count": 2,
-            "unionMs": 0.091,
-            "inclusiveMs": 0.091,
-            "maxSliceMs": 0.058,
+            "unionMs": 0.666,
+            "inclusiveMs": 0.666,
+            "maxSliceMs": 0.598,
             "slices": [
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371668520083,
-                "dur": 58
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067751521,
+                "dur": 68
               },
               {
-                "pid": 56877,
-                "tid": 17546640,
-                "ts": 371668541902,
-                "dur": 33
+                "pid": 13572,
+                "tid": 17804360,
+                "ts": 375067781776,
+                "dur": 598
               }
             ]
           },
           "trace": {
             "file": "timing-many-nodes-pair-7-compact.trace.json.gz",
-            "sha256": "a7c0994200eb0db4b582b984b2b3a0af7386c8259822825264dd8ede2bb15600",
-            "rawBytes": 116757,
-            "gzipBytes": 21623
+            "sha256": "822a3ac2f051e9044c8d80a42c00c469ff9d7f390b8102f9a93c644010a807b1",
+            "rawBytes": 114838,
+            "gzipBytes": 21631
           }
         },
         "deltaMs": {
-          "recalcStyleMs": -0.4540000000000002,
-          "layoutMs": -0.11500000000000021,
-          "taskMs": -0.5809999999999995,
-          "paintMs": -0.5830000000000001
+          "recalcStyleMs": -0.10599999999999987,
+          "layoutMs": -0.5360000000000003,
+          "taskMs": 0.8050000000000033,
+          "paintMs": 0.5660000000000001
         }
       }
     ],
     "conclusion": "Quiet-host paired synthetic measurements are mixed and do not establish a rendering-speed improvement. Paint is measured from actual renderer-main Paint/X trace spans, not inferred from task duration."
   },
   "evidence": {
-    "archive": "lightningcss-compact-synthetic-evidence-2026-10-04.tar.gz",
+    "archive": "lightningcss-compact-synthetic-evidence-observer-fix-2026-10-04.tar.gz",
     "excluded": [
       "Derived compiler executables",
       "Duplicate per-state observations already contained in original report.json"
@@ -4297,9 +4782,9 @@
       "timings/report.json",
       "oracle/report.json"
     ],
-    "fileCount": 4028,
-    "uncompressedBytes": 108547430,
-    "sha256": "8767ab8d673cedcac639221128c0486f7ca763c6d5a9fa6ea135420470d55f31",
-    "archiveBytes": 2589010
+    "fileCount": 4349,
+    "uncompressedBytes": 206654109,
+    "sha256": "94118cd5cf903ad55789de92d8f258ccd58eecce7b64b3a2613294fe5f629de0",
+    "archiveBytes": 5046508
   }
 }

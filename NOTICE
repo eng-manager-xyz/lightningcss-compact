@@ -19,3 +19,10 @@ Actual dependency license, copyright, and disclaimer files are included under
 licenses/third-party/. Its generated index links the exact unmodified Cargo
 source packages and records any missing upstream notice files. Native binary
 archives include that tree alongside this notice.
+
+parcel_sourcemap 2.1.1 and seahash 4.1.0 declare MIT in their original Cargo
+metadata but supply no upstream license/copyright notice file at the recorded
+source revisions. Their original authors/license declarations are preserved,
+alongside canonical MIT permission and disclaimer terms from a pinned SPDX
+source. No upstream copyright notice was supplied; no holder or year is invented.
+The index records the source commit, source and excerpt hashes, and selection.

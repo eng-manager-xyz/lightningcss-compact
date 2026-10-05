@@ -157,7 +157,7 @@ summary.evidence.archiveBytes = archiveBytes.length;
 const index = {
     schemaVersion: 1, compiler: summary.compiler, stockCompiler: summary.stockCompiler,
     archive: { name: basename(archive), sha256: summary.evidence.sha256, bytes: archiveBytes.length, fullManifest: 'evidence-manifest.json', payloadFiles: manifest.length },
-    files: manifest.filter(file => /^(native|timings|oracle)\/report\.json$/.test(file.path) || file.path.endsWith('.trace.json.gz') || /^counterexamples\/[^/]+\/(report|summary)\.json$/.test(file.path)),
+    files: manifest.filter(file => /^(native|timings|oracle)\/report\.json$/.test(file.path) || file.path.endsWith('.trace.json.gz') || /^counterexamples\/[^/]+\/(report|summary)\.json$/.test(file.path) || /^counterexamples\/class-observers-old\/[^/]+\/report\.json$/.test(file.path)),
 };
 await writeFile(join(output, 'evidence-manifest.json'), JSON.stringify(index, null, 2) + '\n');
 await writeFile(join(output, 'evidence.sha256'), `${summary.evidence.sha256}  ${basename(archive)}\n`);

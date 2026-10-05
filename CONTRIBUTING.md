@@ -36,6 +36,15 @@ hashes. The generator verifies those records without fetching mutable upstream
 files. Do not invent missing copyright notices or silently replace them with an
 SPDX label.
 
+When exact upstream sources supply only a MIT declaration, preserve their Cargo
+authors/license declaration and distribute canonical MIT permission/disclaimer
+terms separately. Record the primary SPDX source commit, full-source hash,
+excerpt selection, and excerpt hash; retain the source locally so checks verify
+the selection without downloading it. State explicitly when no upstream copyright
+notice was supplied. After populating the Cargo cache, use
+`python3 scripts/third-party-licenses.py --check --offline` to verify locally
+without network resolution.
+
 For changes to transformation behavior, include a case that would fail if the
 cascade changed, not just a snapshot of the generated implementation. Cover
 conflicting class combinations, shorthand/longhand order, layers, importance,
